@@ -1,0 +1,24 @@
+{
+  "name": "hexo-site",
+  "version": "0.0.0",
+  "private": true,
+  "hexo": {
+    "version": "3.2.0"
+  },
+  "dependencies": {
+    "hexo": "latest",
+    "hexo-browsersync": "latest",
+    "hexo-deployer-rsync": "latest",
+    "hexo-generator-archive": "latest",
+    "hexo-generator-category": "latest",
+    "hexo-generator-index": "latest",
+    "hexo-generator-tag": "latest",
+    "hexo-renderer-pug": "latest",
+    "hexo-server": "latest",
+    "highlight.js": "latest",
+    "jeet": "latest",
+    "marked": "latest",
+    "nib": "latest",
+    "stylus": "latest"
+  }
+}

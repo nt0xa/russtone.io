@@ -1,0 +1,42 @@
+doctype html
+html(lang="en")
+
+  head
+    title= config.title
+    link(rel="stylesheet", href=url_for("css/index.css"))
+
+  body
+    header.header
+      h1.logo
+        a.logo__link(href=config.url) russtone
+          span.logo__link__tail .io
+
+    nav.nav
+      ul.nav__list
+        each name, path in theme.menu
+          li.nav__list__item
+            a.nav__list__item__link(href=url_for(path))= name
+
+    main.main
+      block content
+
+    footer.footer
+      ul.contacts__list
+        if theme.contacts.twitter
+          li.contacts__list__item
+            a(
+              href="https://twitter.com/#{theme.contacts.twitter}"
+            ).contacts__list__item__link.contacts__list__item__link--twitter
+              i.fa.fa-twitter-square
+        if theme.contacts.github
+          li.contacts__list__item
+            a(
+              href="https://github.com/#{theme.contacts.github}"
+            ).contacts__list__item__link.contacts__list__item__link--github
+              i.fa.fa-github-square
+        if theme.contacts.linkedin
+          li.contacts__list__item
+            a(
+              href="https://linkedin.com/in/#{theme.contacts.linkedin}"
+            ).contacts__list__item__link.contacts__list__item__link--linkedin
+              i.fa.fa-linkedin-square
