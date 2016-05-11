@@ -10,15 +10,11 @@
 @import url('//fonts.googleapis.com/css?family=Fira+Mono:400,700')
 @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
 
-// =================
-// = Global mixins =
-// =================
-
 global-reset()
 
-// =================
-// = Base16 colors =
-// =================
+// ==========
+// = Colors =
+// ==========
 
 b16-black-0      = #2d2d2d
 b16-black-1      = #393939
@@ -37,25 +33,34 @@ b16-blue         = #6699cc
 b16-violet       = #cc99cc
 b16-brown        = #d27b53
 
-// ======================
-// = Highlight js theme =
-// ======================
-
-@import('./base16-eighties.dark.css')
-
 // =========
 // = Sizes =
 // =========
 
 logo-font-size = 4rem
-nav-font-size = 1rem
-
-very-big-font-size = 2.5rem
-big-font-size = 2rem
-medium-font-size = 1.2rem
-text-font-size = 1rem
-
+h1-font-size = 2.5rem
+h2-font-size = 2rem
+h3-font-size = 1.5rem
+h4-font-size = 1.2rem
+p-font-size = 1rem
 site-width = 40rem
+
+// ==========
+// = Mixins =
+// ==========
+
+button(bg-color)
+  border-radius: .2em
+  color: white
+  display: inline-block
+  font-size: h4-font-size
+  font-weight: bold
+  padding: .4em .6em
+  text-transform: uppercase
+  transition: background-color .6s ease-out 0s
+  background-color: bg-color
+  &:hover
+    background-color: shade(bg-color, 30%)
 
 // ==========
 // = Common =
@@ -64,136 +69,129 @@ site-width = 40rem
 a
   text-decoration: none
 
-// ==========
-// = Header =
-// ==========
+body
+  font-family: 'Source Sans Pro', sans-serif
 
-.header
-  .logo
-    font: bold logo-font-size/100% 'Source Sans Pro', sans-serif
-    margin-top: 1rem
-    text-align: center
-    &__link
-      color: b16-dark-grey-0
-      &__tail
-        color: b16-blue
+p
+  font-family: 'Merriweather', serif
+  line-height: 150%
+  margin-top: 1rem
 
-// ==============
-// = Navigation =
-// ==============
+h1, h2, h3
+  font-weight: bold
 
-.nav
-  &__list
-    center(site-width)
-    font: nav-font-size/100% 'Source Sans Pro', sans-serif
-    margin-top: .5rem
-    text-align: center
-    &__item
-      display: inline-block
-      &__link
-        color: b16-light-grey-0
-        text-transform: uppercase
-        &:hover
-          color: b16-dark-grey-0
-      &:after
-        color: b16-light-grey-0
-        content: "\2022"
-        padding: 0 .6em 0 .8em
-      &:last-child:after
-        content: ""
-        padding: 0
+h1
+  font-size: h1-font-size
 
-// ========
-// = Main =
-// ========
+h2
+  color: b16-dark-grey-0
+  margin-top: 2rem
+  font-size: h2-font-size
 
-.main
+h3
+  color: b16-dark-grey-0
+  margin-top: 1.5rem
+  font-size: h3-font-size
+
+pre
+  margin-top: 1rem
+
+code
+  font: 1rem/140% 'Fira Mono'
+  border-radius: 0.4rem
+
+a
+  text-decoration: none
+  color: b16-blue
+
+header
+  padding-top: 1rem
+
+main
   center(site-width)
   margin-top: 5rem
-  .post-preview
-    border-top: 0.1rem solid b16-light-grey-1
-    min-height: 8em
-    padding: 2rem 2rem 6rem 2rem
-    position: relative
-    &:last-child
-      border-bottom: 0.1rem solid b16-light-grey-1
-    &__title
-      font: bold big-font-size/100% 'Source Sans Pro', sans-serif
-      &__link
-        color: b16-dark-grey-0
-    &__date
-      color: b16-light-grey-0
-      font: medium-font-size/100% 'Source Sans Pro', sans-serif
-      margin-top: .5em
-      text-transform: uppercase
-    &__teaser
-      color: b16-black-1
-      font: text-font-size/150% 'Merriweather', serif
-      margin-top: 1em
-    &__read-more
-      absolute bottom 2rem left 2rem
-      background-color: b16-green
-      border-radius: .2em
-      color: white
-      display: inline-block
-      font: bold medium-font-size/100% 'Source Sans Pro', sans-serif
-      padding: .4em .6em
-      text-transform: uppercase
-      transition: background-color .6s ease-out 0s
-      &:hover
-        background-color: shade(b16-green, 30%)
-  .post
-    &__title
-      color: b16-dark-grey-0
-      font: bold very-big-font-size/100% 'Source Sans Pro', sans-serif
-    &__content
-      margin-top: 2rem
-      font: text-font-size/150% 'Merriweather', serif
-      // Markdown style
-      h2
-        color: b16-dark-grey-0
-        font: bold big-font-size/100% 'Source Sans Pro', sans-serif
-        margin-top: 2rem
-      h3
-        color: b16-dark-grey-0
-        font: bold 1.5rem/100% 'Source Sans Pro', sans-serif
-        margin-top: 1.5rem
-      p
-        margin-top: 1rem
-      pre
-        margin-top: 1rem
-      code
-        font: 1rem/140% 'Fira Mono'
-        border-radius: 0.4rem
-      a
-        text-decoration: none
-        color: b16-blue
 
-
-// ==========
-// = Footer =
-// ==========
-
-.footer
+footer
   margin-top: 1rem
   padding: 5rem
-  .contacts__list
-    center(site-width)
-    clearfix()
-    text-align: center
-    &__item
-      display: inline-block
-      font-size: 1.7rem
-      margin-right: 1em
-      &:last-child
-        margin-right: 0
-      &__link
-        color: b16-light-grey-0
-        transition: color .6s ease-out 0s
-        &--twitter:hover
-          color: b16-cyan
-        &--github:hover
-          color: b16-dark-grey-0
-        &--linkedin:hover
-          color: b16-blue
 
+// ==========
+// = Blocks =
+// ==========
+
+.logo
+  display: block
+  text-align: center
+  font-weight: bold
+  font-size: logo-font-size
+  &__head
+    color: b16-dark-grey-0 !important
+  &__tail
+    color: b16-blue !important
+
+.nav-menu
+  margin-top: .5rem
+  text-align: center
+  &__item
+    display: inline-block
+    &:after
+      color: b16-light-grey-0
+      content: "\2022"
+      padding: 0 .6em 0 .8em
+    &:last-child:after
+      content: ""
+      padding: 0
+  &__link
+    color: b16-light-grey-0
+    text-transform: uppercase
+    &:hover
+      color: b16-dark-grey-0
+
+.post-preview
+  border-top: 0.1rem solid b16-light-grey-1
+  min-height: 8em
+  padding: 2rem 2rem 6rem 2rem
+  position: relative
+  &:last-child
+    border-bottom: 0.1rem solid b16-light-grey-1
+  &__title
+    font-weight: bold
+    font-size: big-font-size
+  &__link
+    color: b16-dark-grey-0
+  &__date
+    color: b16-light-grey-0
+    font-size: medium-font-size
+    margin-top: .5em
+    text-transform: uppercase
+  &__teaser
+    color: b16-black-1
+    margin-top: 1em
+  &__read-more
+    absolute bottom 2rem left 2rem
+    button(b16-green)
+
+.post
+  &__title
+    color: b16-dark-grey-0
+  &__content
+    margin-top: 2rem
+
+.contacts
+  center(site-width)
+  text-align: center
+  &__item
+    display: inline-block
+    font-size: 1.7rem
+    margin-right: 1em
+    &:last-child
+      margin-right: 0
+  &__link
+    color: b16-light-grey-0
+    transition: color .6s ease-out 0s
+    &--twitter:hover
+      color: b16-cyan
+    &--github:hover
+      color: b16-dark-grey-0
+    &--linkedin:hover
+      color: b16-blue

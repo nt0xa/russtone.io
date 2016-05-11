@@ -1,3 +1,12 @@
+include ../bemto/bemto
+
+-
+  set_bemto_settings({
+    prefix: '',
+    element: '__',
+    modifier: '--'
+  })
+
 doctype html
 html(lang="en")
 
@@ -6,37 +15,23 @@ html(lang="en")
     link(rel="stylesheet", href=url_for("css/index.css"))
 
   body
-    header.header
-      h1.logo
-        a.logo__link(href=config.url) russtone
-          span.logo__link__tail .io
+    header
+      +b.A(href=config.url).logo
+        +e.SPAN.head russtone
+        +e.SPAN.tail .io
 
-    nav.nav
-      ul.nav__list
+    nav
+      +b.UL.nav-menu
         each name, path in theme.menu
-          li.nav__list__item
-            a.nav__list__item__link(href=url_for(path))= name
+          +e.item
+            +e.link(href=url_for(path))= name
 
-    main.main
+    main
       block content
 
-    footer.footer
-      ul.contacts__list
-        if theme.contacts.twitter
-          li.contacts__list__item
-            a(
-              href="https://twitter.com/#{theme.contacts.twitter}"
-            ).contacts__list__item__link.contacts__list__item__link--twitter
-              i.fa.fa-twitter-square
-        if theme.contacts.github
-          li.contacts__list__item
-            a(
-              href="https://github.com/#{theme.contacts.github}"
-            ).contacts__list__item__link.contacts__list__item__link--github
-              i.fa.fa-github-square
-        if theme.contacts.linkedin
-          li.contacts__list__item
-            a(
-              href="https://linkedin.com/in/#{theme.contacts.linkedin}"
-            ).contacts__list__item__link.contacts__list__item__link--linkedin
-              i.fa.fa-linkedin-square
+    footer
+      +b.UL.contacts
+        each item, name in theme.contacts
+          +e.item
+            +e.A(href=item.link, class='link--' + name)
+              i(class=item.icon)

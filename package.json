@@ -13,12 +13,12 @@
     "hexo-generator-category": "latest",
     "hexo-generator-index": "latest",
     "hexo-generator-tag": "latest",
-    "hexo-renderer-pug": "latest",
     "hexo-server": "latest",
     "highlight.js": "latest",
     "jeet": "latest",
     "marked": "latest",
     "nib": "latest",
+    "pug": "latest",
     "stylus": "latest"
   }
 }

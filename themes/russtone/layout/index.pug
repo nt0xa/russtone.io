@@ -2,9 +2,9 @@ extends default
 
 block content
   each post in site.posts.toArray()
-    article.post-preview
-      h1.post-preview__title
-        a.post-preview__title__link(href=url_for(post.path))= post.title
-      div.post-preview__date= post.date.format('D MMMM YYYY')
-      p.post-preview__teaser= post.teaser
-      a.post-preview__read-more(href=url_for(post.path)) Read more
+    +b.ARTICLE.post-preview
+      +e.H1.title
+        +e.A(href=url_for(post.path)).link= post.title
+      +e.date= post.date.format('D MMMM YYYY')
+      +e.P.teaser= post.teaser
+      +e.A(href=url_for(post.path)).read-more Read more

@@ -5,7 +5,12 @@ menu:
   about: About
 
 contacts:
-  twitter: russt0ne
-  github: russtone
-  linkedin: prokhorov-anton-70168962
-
+  twitter:
+    icon: fa fa-twitter-square
+    link: https://twitter.com/russt0ne
+  github:
+    icon: fa fa-github-square
+    link: https://github.com/russtone
+  linkedin:
+    icon: fa fa-linkedin-square
+    link: https://linkedin.com/in/prokhorov-anton-70168962
