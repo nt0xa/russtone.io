@@ -13,7 +13,6 @@ function stylusRenderer(data, options, callback) {
     .set('filename', data.path)
     .set('sourcemap', config.sourcemaps)
     .set('compress', config.compress)
-    .set('include css', true)
     .render(callback);
 }
 

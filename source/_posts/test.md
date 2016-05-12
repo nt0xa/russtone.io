@@ -42,4 +42,46 @@ More info: [Generating](http://hexo.io/docs/generating.html)
 $ hexo deploy
 ```
 
+``` ruby
+require "gem"
+
+string = "base16"
+symbol = :base16
+fixnum = 0
+float  = 0.00
+array  = Array.new
+array  = ['chris', 85]
+hash   = {"test" => "test"}
+regexp = /[abc]/
+
+# This is a comment
+class Person
+
+  attr_accessor :name
+
+  def initialize(attributes = {})
+    @name = attributes[:name]
+  end
+
+  def self.greet
+    "hello"
+  end
+end
+
+person1 = Person.new(:name => "Chris")
+print Person::greet, " ", person1.name, "\n"
+puts "another #{Person::greet} #{person1.name}"
+```
+
+``` c
+#include <stdio.h>
+
+#define HELLO 1
+
+int main(int argc, char *argv[]) {
+  printf("asdf\n");
+  return 0;
+}
+```
+
 More info: [Deployment](http://hexo.io/docs/deployment.html)

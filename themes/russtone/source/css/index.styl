@@ -107,7 +107,8 @@ h3
   font-size: h3-font-size
 
 pre
-  margin: 1rem 0
+  padding: 1rem
+  margin: 2rem 0
 
 code
   font: 1rem/140% 'Fira Mono'
@@ -180,3 +181,44 @@ code
       color: b16-dark-grey-0
     &--linkedin:hover
       color: b16-blue
+
+// =============
+// = Highlight =
+// =============
+
+.sourceCode
+  background-color: b16-black-0
+  color: b16-white-0
+  border-radius: .8rem
+
+  // keyword, flow
+  .kw, .cf
+    color: b16-blue
+
+  // data type
+  .dt
+    color: b16-yellow
+
+  // number
+  .dv, .bn, .fl
+    color: b16-orange
+
+  // string
+  .st
+    color: b16-green
+
+  // comment
+  .co
+    color: b16-dark-grey-1
+
+  // buildins
+  .bu
+    color: b16-violet
+
+  // char
+  .ch
+    color: b16-orange
+
+  // other
+  .ot
+    color: b16-red

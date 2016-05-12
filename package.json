@@ -18,6 +18,7 @@
     "jeet": "latest",
     "marked": "latest",
     "nib": "latest",
+    "pdc": "^0.2.2",
     "pug": "latest",
     "stylus": "latest"
   }
