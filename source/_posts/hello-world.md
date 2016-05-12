@@ -1,52 +1,70 @@
-title: Hello World
+title: Makefile
 teaser:
   Mobile 100 (Flag system) task writeup from RCTF 2015. Android app decompiling, changing smali
   code and many other interesting things :)
 ---
+<!-- toc -->
 
+## Example
+``` makefile
+CC = gcc
+LD = $(CC)
+CFLAGS = -I./include -g
+LDFLAGS = -levent
+SOURCE_FILES = $(wildcard *.c)
+OBJECT_FILES = $(SOURCE_FILES:%.c=%.o)
 
-Welcome to [Hexo](http://hexo.io/)! This is your very first post. Check [documentation](http://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](http://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
+all: $(TARGET)
 
-## Quick Start
+$(TARGET): $(OBJECT_FILES)
+	$(LD) $^ -o $@ $(LDFLAGS)
 
-### Create a new post
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-```bash
-$ hexo new "My New Post"
+clean:
+	@rm -f $(OBJECT_FILES) $(TARGET)
+```
+### Sub section 1
+#### Sub-sub section 1
+### Sub section 2
+
+## All *.c or *.o files
+
+``` makefile
+# all *.c files in directory
+SOURCE_FILES = $(wildcard *.c)
+
+# replace .c to .o
+$(patsubst %.c,%.o,$(wildcard *.c))
+
+# also replace .c with .o
+$(VARIABLE:%.o=%.c)
+
+# matching any number of any characters
+%
 ```
 
-More info: [Writing](http://hexo.io/docs/writing.html)
+## Variable assigment
 
-### Run server
+``` makefile
+# value expanded when the variable is used
+VARIABLE = value
 
-```bash
-$ hexo server
+# value expanded at declaration time
+VARIABLE := value
+
+# set variable only if it doesn't have a value
+VARIABLE ?= value
+
+# append supplied value to the existing value
+VARIABLE += value
 ```
 
-More info: [Server](http://hexo.io/docs/server.html)
+## Automatic variables
 
-### Generate static files
-
-```bash
-$ hexo generate
+``` makefile
+$@   # the current target
+$<   # first dependency
+$^   # all dependencies
 ```
-
-More info: [Generating](http://hexo.io/docs/generating.html)
-
-### Deploy to remote sites
-
-```bash
-$ hexo deploy
-```
-
-$$
-\frac{\partial u}{\partial t} = h^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}\right)
-$$
-
-```c
-int main() {
-  return 0;
-}
-```
-
-More info: [Deployment](http://hexo.io/docs/deployment.html)

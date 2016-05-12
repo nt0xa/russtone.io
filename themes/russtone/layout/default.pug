@@ -8,11 +8,11 @@ include ../bemto/bemto
   })
 
 doctype html
-html(lang="en")
+html(lang='en')
 
   head
     title= config.title
-    link(rel="stylesheet", href=url_for("css/index.css"))
+    link(rel='stylesheet', href=url_for('css/index.css'))
 
   body
     header
@@ -35,3 +35,15 @@ html(lang="en")
           +e.item
             +e.A(href=item.link, class='link--' + name)
               i(class=item.icon)
+
+    script(type='text/x-mathjax-config').
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+          processEscapes: true
+        }
+      });
+
+    script(type='text/javascript', async,
+           src='//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML')

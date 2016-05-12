@@ -50,6 +50,7 @@ site-width = 40rem
 // ==========
 
 button(bg-color)
+  font-family: 'Source Sans Pro', sans-serif
   border-radius: .2em
   color: white
   display: inline-block
@@ -67,10 +68,14 @@ button(bg-color)
 // ==========
 
 body
-  font-family: 'Source Sans Pro', sans-serif
+  font-family: 'Merriweather', serif
 
 header
+  font-family: 'Source Sans Pro', sans-serif
   margin: 1rem 0
+
+nav
+  font-family: 'Source Sans Pro', sans-serif
 
 main
   padding-top: 3rem
@@ -84,13 +89,13 @@ a
   text-decoration: none
   color: b16-blue
 
-p
-  font-family: 'Merriweather', serif
+p, ul
   line-height: 150%
   margin: 1rem 0
   color: b16-black-0
 
 h1, h2, h3
+  font-family: 'Source Sans Pro', sans-serif
   color: b16-dark-grey-0
   font-weight: bold
 
@@ -108,11 +113,16 @@ h3
 
 pre
   padding: 1rem
-  margin: 2rem 0
+  margin: 1rem 0
+  border-radius: 0.4rem
+  background-color: b16-black-0
 
 code
   font: 1rem/140% 'Fira Mono'
-  border-radius: 0.4rem
+  color: b16-white-0
+  background-color: b16-black-0
+  padding: .1rem
+  border-radius: .2rem
 
 // ==========
 // = Blocks =
@@ -156,6 +166,7 @@ code
   &__link
     color: b16-dark-grey-0
   &__date
+    font-family: 'Source Sans Pro', sans-serif
     color: b16-light-grey-0
     font-size: medium-font-size
     margin-top: .5em
@@ -187,9 +198,6 @@ code
 // =============
 
 .sourceCode
-  background-color: b16-black-0
-  color: b16-white-0
-  border-radius: .8rem
 
   // keyword, flow
   .kw, .cf
