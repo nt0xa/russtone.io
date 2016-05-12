@@ -66,54 +66,52 @@ button(bg-color)
 // = Common =
 // ==========
 
-a
-  text-decoration: none
-
 body
   font-family: 'Source Sans Pro', sans-serif
 
-p
-  font-family: 'Merriweather', serif
-  line-height: 150%
+header
+  margin: 1rem 0
+
+main
+  padding-top: 3rem
+  center(site-width)
+
+footer
   margin-top: 1rem
-
-h1, h2, h3
-  font-weight: bold
-
-h1
-  font-size: h1-font-size
-
-h2
-  color: b16-dark-grey-0
-  margin-top: 2rem
-  font-size: h2-font-size
-
-h3
-  color: b16-dark-grey-0
-  margin-top: 1.5rem
-  font-size: h3-font-size
-
-pre
-  margin-top: 1rem
-
-code
-  font: 1rem/140% 'Fira Mono'
-  border-radius: 0.4rem
+  padding: 3rem
 
 a
   text-decoration: none
   color: b16-blue
 
-header
-  padding-top: 1rem
+p
+  font-family: 'Merriweather', serif
+  line-height: 150%
+  margin: 1rem 0
+  color: b16-black-0
 
-main
-  center(site-width)
-  margin-top: 5rem
+h1, h2, h3
+  color: b16-dark-grey-0
+  font-weight: bold
 
-footer
-  margin-top: 1rem
-  padding: 5rem
+h1
+  font-size: h1-font-size
+  margin: 1rem 0
+
+h2
+  margin: 1rem 0
+  font-size: h2-font-size
+
+h3
+  margin: 1rem 0
+  font-size: h3-font-size
+
+pre
+  margin: 1rem 0
+
+code
+  font: 1rem/140% 'Fira Mono'
+  border-radius: 0.4rem
 
 // ==========
 // = Blocks =
@@ -130,7 +128,7 @@ footer
     color: b16-blue !important
 
 .nav-menu
-  margin-top: .5rem
+  margin: 1rem 0
   text-align: center
   &__item
     display: inline-block
@@ -150,13 +148,10 @@ footer
 .post-preview
   border-top: 0.1rem solid b16-light-grey-1
   min-height: 8em
-  padding: 2rem 2rem 6rem 2rem
+  padding: 1rem 2rem 2rem 2rem
   position: relative
   &:last-child
     border-bottom: 0.1rem solid b16-light-grey-1
-  &__title
-    font-weight: bold
-    font-size: big-font-size
   &__link
     color: b16-dark-grey-0
   &__date
@@ -164,18 +159,8 @@ footer
     font-size: medium-font-size
     margin-top: .5em
     text-transform: uppercase
-  &__teaser
-    color: b16-black-1
-    margin-top: 1em
   &__read-more
-    absolute bottom 2rem left 2rem
     button(b16-green)
-
-.post
-  &__title
-    color: b16-dark-grey-0
-  &__content
-    margin-top: 2rem
 
 .contacts
   center(site-width)

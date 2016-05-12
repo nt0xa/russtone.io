@@ -1,0 +1,3 @@
+[submodule "themes/russtone/bemto"]
+	path = themes/russtone/bemto
+	url = https://github.com/glebmachine/bemto
