@@ -11,6 +11,7 @@ function stylusRenderer(data, options, callback) {
   stylus(data.text)
     .use(nib())
     .use(jeet())
+    .use(rupture())
     .set('filename', data.path)
     .set('sourcemap', config.sourcemaps)
     .set('compress', config.compress)

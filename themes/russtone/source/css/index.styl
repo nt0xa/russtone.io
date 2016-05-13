@@ -1,5 +1,6 @@
 @import 'jeet'
 @import 'nib'
+@import 'rupture'
 
 // =========
 // = Fonts =
@@ -99,32 +100,34 @@ p
 
 ul
   line-height: 150%
+  padding-left: 2em
+  list-style-type: disc
   ul
-    margin-left: 1rem
+    list-style-type: circle
     ul
-     margin-left: 1rem
+      list-style-type: disc
 
-h1, h2, h3
+h1, h2, h3, h4
   font-family: 'Source Sans Pro', sans-serif
   color: b16-dark-grey-0
   font-weight: bold
+  margin: 1rem 0
 
 h1
   font-size: h1-font-size
-  margin: 1rem 0
 
 h2
-  margin: 1rem 0
   font-size: h2-font-size
 
 h3
-  margin: 1rem 0
   font-size: h3-font-size
+
+h4
+  font-size: h4-font-size
 
 pre
   padding: 1rem
-  margin: 1rem 0
-  border-radius: 0.4rem
+  margin: 1.5rem 0
   background-color: b16-black-0
 
 code
@@ -132,20 +135,20 @@ code
   color: b16-white-0
   background-color: b16-black-0
   padding: .1rem
-  border-radius: .2rem
 
 table
+  border-spacing: 0
+  border-collapse: collapse
+  margin: 1.5rem 0
+  td, th
+    padding: .5rem 1rem
+    border: 1px solid b16-light-grey-1
   th
-    color: b16-white-0
-    background-color: b16-light-grey-0
-    padding: .8rem
+    font-weight: bold
     text-align: center
-    &:first-child
-      border-radius: .4rem 0 0 0
-    &:last-child
-      border-radius: 0 .4rem 0 0
-  td
-    padding: 1rem
+  tr
+    &:nth-child(2n)
+      background-color: b16-white-1
 
 // ==========
 // = Blocks =
@@ -164,6 +167,7 @@ table
 .nav-menu
   margin: 1rem 0
   text-align: center
+  padding: 0
   &__item
     display: inline-block
     &:after
@@ -180,7 +184,7 @@ table
       color: b16-dark-grey-0
 
 .post-preview
-  border-top: 0.1rem solid b16-light-grey-1
+  border-top: 1px solid b16-light-grey-1
   min-height: 8em
   padding: 1rem 2rem 2rem 2rem
   position: relative

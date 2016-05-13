@@ -67,7 +67,3 @@ $@   # the current target
 $<   # first dependency
 $^   # all dependencies
 ```
-
-| test  | test  |
-|-------|-------|
-| Hello | World |
