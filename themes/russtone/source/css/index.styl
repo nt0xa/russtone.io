@@ -9,6 +9,7 @@
 @import url('//fonts.googleapis.com/css?family=Merriweather:400,700')
 @import url('//fonts.googleapis.com/css?family=Fira+Mono:400,700')
 @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
+@import url('//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css')
 
 global-reset()
 
@@ -88,11 +89,20 @@ footer
 a
   text-decoration: none
   color: b16-blue
+  &:hover
+    color: shade(b16-blue, 30%)
 
-p, ul
+p
   line-height: 150%
   margin: 1rem 0
   color: b16-black-0
+
+ul
+  line-height: 150%
+  ul
+    margin-left: 1rem
+    ul
+     margin-left: 1rem
 
 h1, h2, h3
   font-family: 'Source Sans Pro', sans-serif
@@ -123,6 +133,19 @@ code
   background-color: b16-black-0
   padding: .1rem
   border-radius: .2rem
+
+table
+  th
+    color: b16-white-0
+    background-color: b16-light-grey-0
+    padding: .8rem
+    text-align: center
+    &:first-child
+      border-radius: .4rem 0 0 0
+    &:last-child
+      border-radius: 0 .4rem 0 0
+  td
+    padding: 1rem
 
 // ==========
 // = Blocks =
@@ -186,47 +209,35 @@ code
   &__link
     color: b16-light-grey-0
     transition: color .6s ease-out 0s
-    &--twitter:hover
+    &_twitter:hover
       color: b16-cyan
-    &--github:hover
+    &_github:hover
       color: b16-dark-grey-0
-    &--linkedin:hover
+    &_linkedin:hover
       color: b16-blue
 
 // =============
 // = Highlight =
 // =============
 
-.sourceCode
-
-  // keyword, flow
-  .kw, .cf
+code
+  .keyword
     color: b16-blue
 
-  // data type
-  .dt
+  .variable, .regexp
+    color: b16-red
+
+  .section, .symbol
     color: b16-yellow
 
-  // number
-  .dv, .bn, .fl
+  .number
     color: b16-orange
 
-  // string
-  .st
+  .string
     color: b16-green
 
-  // comment
-  .co
+  .comment
     color: b16-dark-grey-1
 
-  // buildins
-  .bu
+  .built_in
     color: b16-violet
-
-  // char
-  .ch
-    color: b16-orange
-
-  // other
-  .ot
-    color: b16-red

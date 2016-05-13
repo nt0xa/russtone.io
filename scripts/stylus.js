@@ -1,8 +1,9 @@
 'use strict';
 
-var stylus = require('stylus');
-var nib = require('nib');
-var jeet = require('jeet');
+var stylus  = require('stylus');
+var nib     = require('nib');
+var jeet    = require('jeet');
+var rupture = require('rupture');
 
 function stylusRenderer(data, options, callback) {
   var config = this.config.stylus || {};

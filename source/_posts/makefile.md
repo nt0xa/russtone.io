@@ -3,10 +3,12 @@ teaser:
   Mobile 100 (Flag system) task writeup from RCTF 2015. Android app decompiling, changing smali
   code and many other interesting things :)
 ---
-<!-- toc -->
+
+[[toc]]
 
 ## Example
-``` makefile
+
+``` make
 CC = gcc
 LD = $(CC)
 CFLAGS = -I./include -g
@@ -25,13 +27,10 @@ $(TARGET): $(OBJECT_FILES)
 clean:
 	@rm -f $(OBJECT_FILES) $(TARGET)
 ```
-### Sub section 1
-#### Sub-sub section 1
-### Sub section 2
 
 ## All *.c or *.o files
 
-``` makefile
+``` make
 # all *.c files in directory
 SOURCE_FILES = $(wildcard *.c)
 
@@ -47,7 +46,7 @@ $(VARIABLE:%.o=%.c)
 
 ## Variable assigment
 
-``` makefile
+``` make
 # value expanded when the variable is used
 VARIABLE = value
 
@@ -63,8 +62,12 @@ VARIABLE += value
 
 ## Automatic variables
 
-``` makefile
+``` make
 $@   # the current target
 $<   # first dependency
 $^   # all dependencies
 ```
+
+| test  | test  |
+|-------|-------|
+| Hello | World |

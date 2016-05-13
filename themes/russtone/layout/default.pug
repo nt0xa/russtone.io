@@ -1,17 +1,11 @@
 include ../bemto/bemto
 
--
-  set_bemto_settings({
-    prefix: '',
-    element: '__',
-    modifier: '--'
-  })
-
 doctype html
 html(lang='en')
 
   head
     title= config.title
+    meta(charset='UTF-8')
     link(rel='stylesheet', href=url_for('css/index.css'))
 
   body
@@ -33,17 +27,5 @@ html(lang='en')
       +b.UL.contacts
         each item, name in theme.contacts
           +e.item
-            +e.A(href=item.link, class='link--' + name)
+            +e.A(href=item.link, class='link _' + name)
               i(class=item.icon)
-
-    script(type='text/x-mathjax-config').
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ['\\(','\\)'] ],
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-          processEscapes: true
-        }
-      });
-
-    script(type='text/javascript', async,
-           src='//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML')

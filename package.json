@@ -16,10 +16,13 @@
     "hexo-server": "latest",
     "highlight.js": "latest",
     "jeet": "latest",
-    "marked": "latest",
+    "markdown-it": "^6.0.1",
+    "markdown-it-anchor": "^2.5.0",
+    "markdown-it-katex": "^2.0.1",
+    "markdown-it-table-of-contents": "^0.2.0",
     "nib": "latest",
-    "pdc": "^0.2.2",
     "pug": "latest",
+    "rupture": "^0.6.1",
     "stylus": "latest"
   }
 }
