@@ -23,6 +23,7 @@
     "nib": "latest",
     "pug": "latest",
     "rupture": "^0.6.1",
-    "stylus": "latest"
+    "stylus": "latest",
+    "typographic": "^2.9.3"
   }
 }

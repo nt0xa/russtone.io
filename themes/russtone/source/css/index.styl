@@ -1,6 +1,7 @@
 @import 'jeet'
 @import 'nib'
 @import 'rupture'
+@import 'typographic'
 
 // =========
 // = Fonts =
@@ -12,40 +13,49 @@
 @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
 @import url('//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css')
 
-global-reset()
-
 // ==========
 // = Colors =
 // ==========
 
-b16-black-0      = #2d2d2d
-b16-black-1      = #393939
-b16-dark-grey-0  = #515151
-b16-dark-grey-1  = #747369
-b16-light-grey-0 = #a09f93
-b16-light-grey-1 = #d3d0c8
-b16-white-0      = #e8e6df
-b16-white-1      = #f2f0ec
-b16-red          = #f2777a
-b16-orange       = #f99157
-b16-yellow       = #ffcc66
-b16-green        = #99cc99
-b16-cyan         = #66cccc
-b16-blue         = #6699cc
-b16-violet       = #cc99cc
-b16-brown        = #d27b53
+$black-0      = #2d2d2d
+$black-1      = #393939
+$dark-grey-0  = #515151
+$dark-grey-1  = #747369
+$light-grey-0 = #a09f93
+$light-grey-1 = #d3d0c8
+$white-0      = #e8e6df
+$white-1      = #f2f0ec
+$red          = #f2777a
+$orange       = #f99157
+$yellow       = #ffcc66
+$green        = #99cc99
+$cyan         = #66cccc
+$blue         = #6699cc
+$violet       = #cc99cc
+$brown        = #d27b53
+
+// ===============
+// = Typographic =
+// ===============
+
+$body-font          = 'Merriweather', 'serif'
+$body-font-weight   = normal
+$body-color         = $black-0
+$header-font        = 'Source Sans Pro', 'sans-serif'
+$header-font-weight = bold
+$header-color       = $dark-grey-0
+$max-font           = 18px
+$min-font           = 14px
+$vertical-rhythm    = true
+$courier            = 'Fira Mono', 'monospace'
+
+typographic()
 
 // =========
 // = Sizes =
 // =========
 
-logo-font-size = 4rem
-h1-font-size = 2.5rem
-h2-font-size = 2rem
-h3-font-size = 1.5rem
-h4-font-size = 1.2rem
-p-font-size = 1rem
-site-width = 40rem
+$desktop-width = 720px
 
 // ==========
 // = Mixins =
@@ -56,7 +66,6 @@ button(bg-color)
   border-radius: .2em
   color: white
   display: inline-block
-  font-size: h4-font-size
   font-weight: bold
   padding: .4em .6em
   text-transform: uppercase
@@ -64,161 +73,124 @@ button(bg-color)
   background-color: bg-color
   &:hover
     background-color: shade(bg-color, 30%)
+    color: white
 
 // ==========
 // = Common =
 // ==========
 
-body
-  font-family: 'Merriweather', serif
-
-header
-  font-family: 'Source Sans Pro', sans-serif
-  margin: 1rem 0
-
-nav
-  font-family: 'Source Sans Pro', sans-serif
-
 main
-  padding-top: 3rem
-  center(site-width)
+  +desktop()
+    center($desktop-width)
 
 footer
-  margin-top: 1rem
-  padding: 3rem
+  padding: 2rem
 
 a
   text-decoration: none
-  color: b16-blue
+  color: $blue
   &:hover
-    color: shade(b16-blue, 30%)
-
-p
-  line-height: 150%
-  margin: 1rem 0
-  color: b16-black-0
-
-ul
-  line-height: 150%
-  padding-left: 2em
-  list-style-type: disc
-  ul
-    list-style-type: circle
-    ul
-      list-style-type: disc
-
-h1, h2, h3, h4
-  font-family: 'Source Sans Pro', sans-serif
-  color: b16-dark-grey-0
-  font-weight: bold
-  margin: 1rem 0
-
-h1
-  font-size: h1-font-size
-
-h2
-  font-size: h2-font-size
-
-h3
-  font-size: h3-font-size
-
-h4
-  font-size: h4-font-size
+    color: shade($blue, 30%)
 
 pre
-  padding: 1rem
-  margin: 1.5rem 0
-  background-color: b16-black-0
+  background-color: $black-0
+  overflow: auto
 
 code
-  font: 1rem/140% 'Fira Mono'
-  color: b16-white-0
-  background-color: b16-black-0
-  padding: .1rem
+  color: $white-0
 
 table
-  border-spacing: 0
-  border-collapse: collapse
-  margin: 1.5rem 0
   td, th
-    padding: .5rem 1rem
-    border: 1px solid b16-light-grey-1
+    border: 1px solid $light-grey-1
   th
-    font-weight: bold
     text-align: center
   tr
     &:nth-child(2n)
-      background-color: b16-white-1
+      background-color: $white-1
 
 // ==========
 // = Blocks =
 // ==========
 
 .logo
-  display: block
+  margin-top: 3rem
+  margin-bottom: 2rem
   text-align: center
   font-weight: bold
-  font-size: logo-font-size
+  font-size: 4rem
   &__head
-    color: b16-dark-grey-0 !important
+    color: $dark-grey-0 !important
   &__tail
-    color: b16-blue !important
+    color: $blue !important
 
 .nav-menu
-  margin: 1rem 0
+  font-family: $header-font
+  margin: 1em 0
   text-align: center
   padding: 0
   &__item
     display: inline-block
     &:after
-      color: b16-light-grey-0
+      color: $light-grey-0
       content: "\2022"
       padding: 0 .6em 0 .8em
     &:last-child:after
       content: ""
       padding: 0
   &__link
-    color: b16-light-grey-0
+    color: $light-grey-0
     text-transform: uppercase
     &:hover
-      color: b16-dark-grey-0
+      color: $dark-grey-0
 
 .post-preview
-  border-top: 1px solid b16-light-grey-1
+  border-top: 1px solid $light-grey-1
   min-height: 8em
-  padding: 1rem 2rem 2rem 2rem
+  padding: 1em 2em 2em 2em
   position: relative
   &:last-child
-    border-bottom: 0.1rem solid b16-light-grey-1
+    border-bottom: 1px solid $light-grey-1
   &__link
-    color: b16-dark-grey-0
+    color: $dark-grey-0
   &__date
     font-family: 'Source Sans Pro', sans-serif
-    color: b16-light-grey-0
+    color: $light-grey-0
     font-size: medium-font-size
-    margin-top: .5em
     text-transform: uppercase
+    margin: 1rem 0
   &__read-more
-    button(b16-green)
+    button($green)
 
 .contacts
   center(site-width)
   text-align: center
   &__item
     display: inline-block
-    font-size: 1.7rem
     margin-right: 1em
     &:last-child
       margin-right: 0
+    +desktop()
+      font-size: 2rem
+    +tablet()
+      font-size: 3rem
+    +mobile()
+      font-size: 2.5rem
   &__link
-    color: b16-light-grey-0
-    transition: color .6s ease-out 0s
-    &_twitter:hover
-      color: b16-cyan
-    &_github:hover
-      color: b16-dark-grey-0
-    &_linkedin:hover
-      color: b16-blue
+    &_twitter
+      color: $cyan
+      &:hover
+        color: $cyan
+    &_github
+      color: $dark-grey-0
+      &:hover
+        color: $dark-grey-0
+    &_linkedin
+      color: $blue
+      &:hover
+        color: $blue
+    +desktop()
+      color: $light-grey-0
+      transition: color .6s ease-out 0s
 
 // =============
 // = Highlight =
@@ -226,22 +198,16 @@ table
 
 code
   .keyword
-    color: b16-blue
-
+    color: $blue
   .variable, .regexp
-    color: b16-red
-
+    color: $red
   .section, .symbol
-    color: b16-yellow
-
+    color: $yellow
   .number
-    color: b16-orange
-
+    color: $orange
   .string
-    color: b16-green
-
+    color: $green
   .comment
-    color: b16-dark-grey-1
-
+    color: $dark-grey-1
   .built_in
-    color: b16-violet
+    color: $violet
