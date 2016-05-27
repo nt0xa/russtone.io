@@ -3,31 +3,31 @@ include ../bemto/bemto
 doctype html
 html(lang='en')
 
-  head
-    title= config.title
-    meta(charset='UTF-8')
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    link(rel='stylesheet', href=url_for('css/index.css'))
+	head
+		title= config.title
+		meta(charset='UTF-8')
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		link(rel='stylesheet', href=url_for('css/index.css'))
 
-  body
-    header
-      +b.logo
-        +e.A(href=config.url).link
-          +e.SPAN.head russtone
-          +e.SPAN.tail .io
+	body
+		header
+			+b.logo
+				+e.A(href=config.url).link
+					+e.SPAN.head russtone
+					+e.SPAN.tail .io
 
-    nav
-      +b.UL.nav-menu
-        each name, path in theme.menu
-          +e.item
-            +e.link(href=url_for(path))= name
+		nav
+			+b.UL.nav-menu
+				each name, path in theme.menu
+					+e.item
+						+e.link(href=url_for(path))= name
 
-    main
-      block content
+		main
+			block content
 
-    footer
-      +b.UL.contacts
-        each item, name in theme.contacts
-          +e.item
-            +e.A(href=item.link, class='link _' + name)
-              i(class=item.icon)
+		footer
+			+b.UL.contacts
+				each item, name in theme.contacts
+					+e.item
+						+e.A(href=item.link, class='link _' + name)
+							i(class=item.icon)

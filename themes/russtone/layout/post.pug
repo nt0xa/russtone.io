@@ -1,6 +1,8 @@
 extends default
 
 block content
-  +b.ARTICLE.post
-    +e.H1.title= page.title
-    +e.content!= page.content
+	+b.ARTICLE.post
+		+e.H1.title= page.title
+		+e.date= page.date.format('DD MMM YYYY')
+		+e.divider
+		+e.content!= page.content

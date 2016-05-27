@@ -62,152 +62,164 @@ $desktop-width = 720px
 // ==========
 
 button(bg-color)
-  font-family: 'Source Sans Pro', sans-serif
-  border-radius: .2em
-  color: white
-  display: inline-block
-  font-weight: bold
-  padding: .4em .6em
-  text-transform: uppercase
-  transition: background-color .6s ease-out 0s
-  background-color: bg-color
-  &:hover
-    background-color: shade(bg-color, 30%)
-    color: white
+	font-family: 'Source Sans Pro', sans-serif
+	border-radius: .2em
+	color: white
+	display: inline-block
+	font-weight: bold
+	padding: .4em .6em
+	text-transform: uppercase
+	transition: background-color .6s ease-out 0s
+	background-color: bg-color
+	&:hover
+		background-color: shade(bg-color, 30%)
+		color: white
 
 // ==========
 // = Common =
 // ==========
 
 main
-  +desktop()
-    center($desktop-width)
+	+desktop()
+		center($desktop-width)
 
 footer
-  padding: 2rem
+	padding: 2rem
 
 a
-  text-decoration: none
-  color: $blue
-  &:hover
-    color: shade($blue, 30%)
+	text-decoration: none
+	color: $blue
+	&:hover
+		color: shade($blue, 30%)
 
 pre
-  background-color: $black-0
-  overflow: auto
+	background-color: $black-0
+	overflow: auto
+	code
+		color: $white-0
 
-code
-  color: $white-0
+p
+	code
+		color: $dark-grey-1
+		background-color: $white-1
 
 table
-  td, th
-    border: 1px solid $light-grey-1
-  th
-    text-align: center
-  tr
-    &:nth-child(2n)
-      background-color: $white-1
+	td, th
+		border: 1px solid $light-grey-1
+	th
+		text-align: center
+	tr
+		&:nth-child(2n)
+			background-color: $white-1
 
 // ==========
 // = Blocks =
 // ==========
 
 .logo
-  margin-top: 3rem
-  margin-bottom: 2rem
-  text-align: center
-  font-weight: bold
-  font-size: 4rem
-  &__head
-    color: $dark-grey-0 !important
-  &__tail
-    color: $blue !important
+	margin-top: 3rem
+	margin-bottom: 2rem
+	text-align: center
+	font-weight: bold
+	font-size: 4rem
+	&__head
+		color: $dark-grey-0 !important
+	&__tail
+		color: $blue !important
 
 .nav-menu
-  font-family: $header-font
-  margin: 1em 0
-  text-align: center
-  padding: 0
-  &__item
-    display: inline-block
-    &:after
-      color: $light-grey-0
-      content: "\2022"
-      padding: 0 .6em 0 .8em
-    &:last-child:after
-      content: ""
-      padding: 0
-  &__link
-    color: $light-grey-0
-    text-transform: uppercase
-    &:hover
-      color: $dark-grey-0
+	font-family: $header-font
+	margin: 1em 0
+	text-align: center
+	padding: 0
+	&__item
+		display: inline-block
+		&:after
+			color: $light-grey-0
+			content: "\2022"
+			padding: 0 .6em 0 .8em
+		&:last-child:after
+			content: ""
+			padding: 0
+	&__link
+		color: $light-grey-0
+		text-transform: uppercase
+		&:hover
+			color: $dark-grey-0
 
 .post-preview
-  border-top: 1px solid $light-grey-1
-  min-height: 8em
-  padding: 1em 2em 2em 2em
-  position: relative
-  &:last-child
-    border-bottom: 1px solid $light-grey-1
-  &__link
-    color: $dark-grey-0
-  &__date
-    font-family: 'Source Sans Pro', sans-serif
-    color: $light-grey-0
-    font-size: medium-font-size
-    text-transform: uppercase
-    margin: 1rem 0
-  &__read-more
-    button($green)
+	border-top: 1px solid $light-grey-1
+	min-height: 8em
+	padding: 1em 2em 2em 2em
+	position: relative
+	&:last-child
+		border-bottom: 1px solid $light-grey-1
+	&__link
+		color: $dark-grey-0
+	&__date
+		font-family: 'Source Sans Pro', sans-serif
+		color: $light-grey-0
+		margin: 1rem 0
+	&__read-more
+		button($green)
+
+.post
+	&__date
+		font-family: 'Source Sans Pro', sans-serif
+		color: $light-grey-0
+		margin: 1rem 0
+	&__divider
+		border-bottom: 1px solid $light-grey-1
+		height: 1px
+		margin: 1rem 0
 
 .contacts
-  center(site-width)
-  text-align: center
-  &__item
-    display: inline-block
-    margin-right: 1em
-    &:last-child
-      margin-right: 0
-    +desktop()
-      font-size: 2rem
-    +tablet()
-      font-size: 3rem
-    +mobile()
-      font-size: 2.5rem
-  &__link
-    &_twitter
-      color: $cyan
-      &:hover
-        color: $cyan
-    &_github
-      color: $dark-grey-0
-      &:hover
-        color: $dark-grey-0
-    &_linkedin
-      color: $blue
-      &:hover
-        color: $blue
-    +desktop()
-      color: $light-grey-0
-      transition: color .6s ease-out 0s
+	center(site-width)
+	text-align: center
+	&__item
+		display: inline-block
+		margin-right: 1em
+		&:last-child
+			margin-right: 0
+		+desktop()
+			font-size: 2rem
+		+tablet()
+			font-size: 3rem
+		+mobile()
+			font-size: 2.5rem
+	&__link
+		&_twitter
+			color: $cyan
+			&:hover
+				color: $cyan
+		&_github
+			color: $dark-grey-0
+			&:hover
+				color: $dark-grey-0
+		&_linkedin
+			color: $blue
+			&:hover
+				color: $blue
+		+desktop()
+			color: $light-grey-0
+			transition: color .6s ease-out 0s
 
 // =============
 // = Highlight =
 // =============
 
 code
-  .keyword
-    color: $blue
-  .variable, .regexp
-    color: $red
-  .section, .symbol
-    color: $yellow
-  .number
-    color: $orange
-  .string
-    color: $green
-  .comment
-    color: $dark-grey-1
-  .built_in
-    color: $violet
+	.keyword
+		color: $blue
+	.variable, .regexp
+		color: $red
+	.section, .symbol
+		color: $yellow
+	.number
+		color: $orange
+	.string
+		color: $green
+	.comment
+		color: $dark-grey-1
+	.built_in
+		color: $violet
