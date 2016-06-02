@@ -1,7 +1,7 @@
 extends default
 
 block content
-  each post in site.posts.toArray()
+  each post in site.posts.sort('date', 'desc').toArray()
     +b.ARTICLE.post-preview
       +e.H1.title
         +e.A(href=url_for(post.path)).link= post.title
