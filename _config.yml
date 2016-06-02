@@ -19,6 +19,9 @@ theme: russtone
 highlight:
   enable: false
 
+# Assets
+post_asset_folder: true
+
 # Deployment
 deploy:
   type: rsync
