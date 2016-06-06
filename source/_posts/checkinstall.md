@@ -7,7 +7,7 @@ teaser:
 	built from source on Unix-like systems.
 ---
 
-I often need to install software that not available in repositories.
+I often need to install software that is not available in repositories.
 The only way to install such software is to download its source code, compile it and
 install obtained binaries. I used to do it like this:
 
