@@ -8,7 +8,7 @@ teaser:
 ---
 
 It can be useful when you test network communications and you don't want
-see SSH traffic in wireshark.
+to see SSH traffic in wireshark.
 
 ## Add serial port to VM
 
@@ -27,7 +27,7 @@ user@debian:~$ dmesg | grep tty
 
 So here we have one serial port `ttyS0` with baud rate 115200.
 
-Next, we need to enable getty on this port:
+Next, we need to enable `getty` on this port:
 
 ```sh
 systemctl enable serial-getty@ttyS0.service
