@@ -7,9 +7,9 @@ teaser:
 	built from source on Unix-like systems.
 ---
 
-Often I need to install software that not available in repositories.
-The only way to install such software is download its source code, compile it and
-install obtained binaries. Usially I do it like this:
+I often need to install software that not available in repositories.
+The only way to install such software is to download its source code, compile it and
+install obtained binaries. I used to do it like this:
 
 ``` sh
 cd software-source
@@ -18,10 +18,10 @@ make
 sudo make install
 ```
 
-No problems, so far everything seems to be fine.
-Problems appear when I want uninstall the software installed in such a way.
-Because `make install` can do a lot of things such as copy files, create directories
-and symlinks, etc. it can be tricky to find and remove all this things.
+No problem, so far everything seems to be fine.
+Problems appear when I want uninstall the software installed in such way
+because `make install` can do a lot of things such as copy files, create directories
+and symlinks, etc. So it can be tricky to find and remove all this things.
 
 The solution I found is to use [CheckInstall](https://en.wikipedia.org/wiki/CheckInstall).
 Just install it with:
