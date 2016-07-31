@@ -1,0 +1,11 @@
+script(type='text/javascript').
+	var disqus_config = function () {
+		this.page.url = '#{page.permalink}';
+		this.page.identifier = '#{url_for(page.path)}';
+	};
+	(function() {
+			var d = document, s = d.createElement('script');
+			s.src = '#{theme.disqus}';
+			s.setAttribute('data-timestamp', +new Date());
+			(d.head || d.body).appendChild(s);
+	})();
