@@ -4,6 +4,10 @@ menu:
   archive: Archive
   about: About
 
+google_analytics: UA-81673589-1
+
+disqus: //https-russtone-io.disqus.com/embed.js
+
 contacts:
   twitter:
     icon: fa fa-twitter-square
