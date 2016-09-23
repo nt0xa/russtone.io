@@ -15,7 +15,7 @@
     "hexo-generator-tag": "latest",
     "hexo-server": "latest",
     "highlight.js": "latest",
-    "jeet": "latest",
+    "jeet": "6.1.2",
     "markdown-it": "^6.0.1",
     "markdown-it-anchor": "^2.5.0",
     "markdown-it-katex": "^2.0.1",
