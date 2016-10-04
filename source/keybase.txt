@@ -1,0 +1,73 @@
+==================================================================
+https://keybase.io/russtone
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://russtone.io
+  * I am russtone (https://keybase.io/russtone) on keybase.
+  * I have a public key with fingerprint E21D 8B13 446D BF8F 7961  C695 1127 A43A D184 E69F
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101031dbf84afaa4a9751e076ddc862ae42ac56a305d10736ed43055b4684af4b6f0a",
+            "fingerprint": "e21d8b13446dbf8f7961c6951127a43ad184e69f",
+            "host": "keybase.io",
+            "key_id": "1127a43ad184e69f",
+            "kid": "0101031dbf84afaa4a9751e076ddc862ae42ac56a305d10736ed43055b4684af4b6f0a",
+            "uid": "d6ddd976529c0a852bdb6378e10d8819",
+            "username": "russtone"
+        },
+        "service": {
+            "hostname": "russtone.io",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1475580565,
+    "expire_in": 157680000,
+    "prev": "90f72940bd79ae30e9ee58c9a33232c8d28e9ef9d96037d88d865227d1c41781",
+    "seqno": 7,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+
+owGtUn1MlVUcvmACsjWROUs0gxcBhwjv9xcwZko4LqA5CJDY7X3fc+7lFbjv9b73
+goqIEq2YOD5yCYnKhpoxTVNx2UIIzSw/+UighTEKinJNuSKkMDov1T+tPzvnj3PO
+7zzPc57nt1Pz/DyTn9eiiGNiV8XoUa8bY7Ip01PXUILJGtiBiSVYPpxbYAGAusuS
+rwJMxHACTYoAspWnJask0ZLAMQTEORYAhWdJCdKkpDCsROEMIHCOYiGg0Z6RadZg
+0DJrxSUsCrOqdht0Opyq3YVkIUkAXiYommYNaSsnsITCCgxBkJxEUxIgeBqyghUR
+8zTdYCBzsqTDaFVDNXSwzNn7D/z/7Ns9JwcQDQgcy5CCgks8Q8pAZimOhwQOeJ4Q
+DKAOnXapECK0063rLs0OsdIoDFWLVAUajTWS/AvxVxyHU3NpilaALvJcLocuGkTX
+DoeBLIay5W8Ni6zaAWojYhRBp65qdkwkEFJxqYYoQXMMw+MMy0RhcLtDdUKLaiAY
+juVxNIx3YBGSFHArRwo0nikDTpAghUMBQoZXBImiSIpUeEDyqGQVgMDiFIcCAh4l
+JzlAKDTB8QRmxNpm1zCRQz4lG9LUVZtdcrmdKLN/pffy50xefiaf+d7GBzP5Lwj4
+59dZQxbO5krTlxJrW1Kfmcl1NSG3IveNLrn4avOIOWv8cnvw1MPiX/C9JU1xY/s2
+NZ+80x+ePCxuf+eitH+/873JrxsGjiYeyqu8WVwW8ONE7O+5M/0Ti/febtqpBM+M
+DB1cdPgAyEmsbkkem37d7V/V8hu8EXd+ZOuCzoqIia/i7m1OOzMkPElpmH7a01Nx
+wr5mmf5ypjsP+6b4XGTW1NXyp32hR8x3SzNafl1cm0LOjp+e6SL7h+qO1H+2KWzh
+qu/uN8M7PoGrTb1kUArVbb2w+0Pvjr6Yk/Hpg9cLl53Kje+8v/SQmPhuwucdg6tn
+X/Okdqtl881JJbs2hMODW0Rb67mqH2qzOx+Hl7fGBze0Xnnh2tSnLbFn0tu/74k2
+r4/Qk/dwt7iJoaTqeDE4ry5r7UcZnqWv+MVVvm3ObttV9sXwWc+0ElRli2mz9MI/
+YGNHU8YzEJ0fhrl77IVK17ykgI1pYVGRKzTl5vLdoXvqh3NP+b9Brl3y8Ppk/RP5
+A6npwUyqs6/0pa7Wy3Fd8R0+OV6Blsruxtbw2OIXifXbJhuqfT+R8Eu314inhcn2
+s8cb7670DsmhhdGPx0OjHvvce/P4l+VSuC+meuC376tBW2PeWgcSB4a2lNYGzFZe
+2+jb63dh57FH/QewwMHklLaBR7bNPzmuXmnzHE47n52eM6kVJPgkrHjQX7Mhx+/n
+PwE=
+=YNwW
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/russtone
+
+==================================================================
+
