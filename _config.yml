@@ -12,6 +12,9 @@ root: /
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 
+# Skip
+skip_render: [keybase.txt]
+
 # Theme
 theme: russtone
 
