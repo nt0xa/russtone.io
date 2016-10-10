@@ -22,8 +22,8 @@ md.use(toc, {
   includeLevel: [1, 2, 3, 4]
 });
 
-function markedRenderer(data) {
+function markdownItRenderer(data) {
   return md.render(data.text);
 }
 
-hexo.extend.renderer.register('md', 'html', markedRenderer, true);
+hexo.extend.renderer.register('md', 'html', markdownItRenderer, true);
