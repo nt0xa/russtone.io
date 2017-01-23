@@ -31,7 +31,7 @@ deploy:
   host: russtone.io
   port: 22
   user: russtone
-  root: /var/www/blog
+  root: /var/www/russtone.io
   delete: true
   verbose: true
   ignore_errors: false

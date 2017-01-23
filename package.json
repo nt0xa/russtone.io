@@ -15,15 +15,15 @@
     "hexo-generator-tag": "latest",
     "hexo-server": "latest",
     "highlight.js": "latest",
-    "jeet": "6.1.2",
-    "markdown-it": "^6.0.1",
+    "jeet": "7.1.0",
+    "markdown-it": "^8.2.2",
     "markdown-it-anchor": "^2.5.0",
     "markdown-it-katex": "^2.0.1",
-    "markdown-it-table-of-contents": "^0.2.0",
+    "markdown-it-table-of-contents": "^0.3.1",
     "nib": "latest",
     "pug": "latest",
     "rupture": "^0.6.1",
     "stylus": "latest",
-    "typographic": "^2.9.3"
+    "typographic": "^3.0.0"
   }
 }
