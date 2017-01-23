@@ -10,7 +10,7 @@ teaser:
 
 So we have an android application file. Let's decompile its code!
 
-First we need to translate Dalvik bytecode to equivalent Java bytecode. I used [enjarify](https://github.com/google/enjarify) for this:
+First, we need to translate Dalvik bytecode to equivalent Java bytecode. I used [enjarify](https://github.com/google/enjarify) for this:
 
 ```sh
 ➜ git clone https://github.com/google/enjarify
@@ -40,13 +40,13 @@ public String readMind()
 }
 ```
 
-Here we can see that string with json `{"device": "000000000000000"}` is encrypted, encoded to base64 and then sended to server. And function `encrypt` looks like this:
+Here we can see that string with json `{"device": "000000000000000"}` is encrypted, encoded to base64 and then sent to the server. And  `encrypt` function looks like this:
 
 ```java
 public native int encrypt(Context paramContext, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
 ```
 
-And above we have lines:
+And above this we have lines:
 
 ```java
 static
@@ -57,7 +57,7 @@ static
 
 So as we can see `encrypt` function is implemented in library `libnative-lib.so`. Let's find it.
 
-First we should extract application files. I used [apktool](https://ibotpeaches.github.io/Apktool/) for this:
+First, we should extract application files. I used [apktool](https://ibotpeaches.github.io/Apktool/) for this:
 
 ```sh
 ➜ apktool d mindreader-c3df7f2c966238cc8f4d4327dc1dca8b8b5a69d702f966963c828c965ebbf516.apk
@@ -66,7 +66,7 @@ First we should extract application files. I used [apktool](https://ibotpeaches.
 libnative-lib.so: ELF 32-bit LSB shared object, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /system/bin/linker, BuildID[sha1]=f092f48095eec3cb0c6dd8eddec9994c2b3e01b4, stripped
 ```
 
-Now we should find `encrypt` function in this library. Because `encrypt` is called from java code it seems that it should use JNI (Java Native Interface). So according to [Oracle documentation](https://docs.oracle.com/javase/1.5.0/docs/guide/jni/spec/design.html) name of `encrypt` function  in library will be like `Java_ch_scrt_hiddenservice_MainActivity_encrypt` (`ch.scrt.hiddenservice` - name of application package, `MainActivity` - name of class).
+Now we should find `encrypt` function in this library. As `encrypt` is called from java code it seems that it should use JNI (Java Native Interface). So, according to [Oracle documentation](https://docs.oracle.com/javase/1.5.0/docs/guide/jni/spec/design.html) name of `encrypt` function  in the library will be like `Java_ch_scrt_hiddenservice_MainActivity_encrypt` (`ch.scrt.hiddenservice` - name of the application package, `MainActivity` - name of class).
 
 In Ida Pro this function looks like this:
 
@@ -109,7 +109,7 @@ int __fastcall Java_ch_scrt_hiddenservice_MainActivity_encrypt(int a1, int a2, i
 }
 ```
 
-First also according to JNI Oracle documentation the first argument of this function is `JNIEnv* env` and the second is `jobject obj`. The rest of arguments is arguments from java i.e. `Context paramContext, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)`. Now our function looks like this:
+Also according to JNI Oracle documentation the first argument of this function is `JNIEnv* env` and the second is `jobject obj`. The rest of arguments is arguments from java i.e. `Context paramContext, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)`. Now our function looks like this:
 
 ```c
 int __fastcall Java_ch_scrt_hiddenservice_MainActivity_encrypt(int env, int obj, int paramContext, int paramArrayOfByte1, int paramArrayOfByte2)
@@ -150,8 +150,8 @@ int __fastcall Java_ch_scrt_hiddenservice_MainActivity_encrypt(int env, int obj,
 }
 ```
 
-Better but still not readable because of many calls like `(*(int (__fastcall **)(int, int, char *))(*(_DWORD *)env_1 + 736))`  i.e. by offset in struct `JNIEnv *env`.
-We need to find function names by its offsets in struct `JNIEnv`.
+Better but still not readable because of many function calls like `(*(int (__fastcall **)(int, int, char *))(*(_DWORD *)env_1 + 736))`  i.e. by offset in struct `JNIEnv *env`.
+We need to find function names by their offsets in struct `JNIEnv`.
 All JNI functions are listed [here](http://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/functions.html).
 But I found cool Ida script [IDA_JNI_Rename](https://github.com/trojancyborg/IDA_JNI_Rename) on GitHub that helps to do renamamings.
 After using it our function will look like this:
@@ -256,7 +256,7 @@ int __fastcall Java_ch_scrt_hiddenservice_MainActivity_encrypt(int env, int obj,
 }
 ```
 
-So encryption algoritm looks like this:
+So, the encryption algoritm looks like this:
 
 ```c
 int some_int = sub_4AC4(env_1, paramContext_1);
@@ -267,12 +267,12 @@ for (i = 0; i < plaintext_len; i++) {
 ```
 
 Cool, but we don't have values `some_int` and `dword_1D0F8`.
-At this point I decided that it will be easier to place breakpoint here and just copy this values from memory because I'm lazy :)
+At this point I decided that it would be easier to place a breakpoint here and just copy this values from memory because I'm lazy :)
 To do this I used android emulator `armeabi-v7a`:
 
 ![](emulator.png)
 
-Start emulator with command:
+Start emulator with the command:
 
 ```sh
 ➜ emulator -avd Nexus_5_API_24
@@ -281,21 +281,21 @@ Start emulator with command:
 Then install application to emulator by drag'n'dropping APK-file to emulator's window.
 
 After that set up Ida Dalvik debugger as described [here](https://www.hex-rays.com/products/ida/support/tutorials/debugging_dalvik.pdf)
-and place breakpoint on `encrypt` in `readMind` function:
+and place a breakpoint on `encrypt` in `readMind` function:
 
 ![](dalvik_breakpoint.png)
 
 Then open another Ida instance with `libnative-lib.so`,
 set up remote android debugger as described [here](https://finn.svbtle.com/remotely-debugging-android-binaries-in-ida-pro)
-and place breakpoint before encryption started:
+and place a breakpoint before encryption starts:
 
 ![](arm_breakpoint.png)
 
-After that start Ida with Dalvik debugger and wait until program is stopped and then start remote android debugger and attach to application process:
+After that start Ida with Dalvik debugger and wait until program stops and then start remote android debugger and attach to application process:
 
 ![](attach.png)
 
-Next press continue (F9) in first Ida instance (Dalvik debugger) and wait until breakpoint fires in second instance.
+Next, press continue (F9) in the first Ida instance (Dalvik debugger) and wait until breakpoint fires in the second instance.
 
 ![](break.png)
 
@@ -349,7 +349,7 @@ Host: mindreader.teaser.insomnihack.ch
 Connection: close
 ```
 
-So we can check correctness of python script like this:
+So, we can check correctness of python script like this:
 
 ```python
 test_in = '{"device":"000000000000000"}'
@@ -390,8 +390,8 @@ def sms_send(device_id, date, sender, body):
 
 `sms_send` request I found in file `SMSReceiver.java` in JD-GUI.
 
-After playing a little bit with this two requests I found that parameter sender in `sms_send` is vulnerable to SQL injection (time-based).
-So after gettting all nessesary table names and column names I got flag:
+After playing a little bit with this two requests I found that parameter `sender` in `sms_send` is vulnerable to SQL injection (time-based).
+So, after gettting all nessesary table names and column names I got a flag:
 
 ```sh
 ➜ python solve.py
