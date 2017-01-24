@@ -3,6 +3,7 @@ title: russtone.io
 author: russtone
 language: en
 timezone: Europe/Moscow
+description: Information security blog
 
 # URL
 url: http://russtone.io
@@ -17,6 +18,10 @@ skip_render: [keybase.txt]
 
 # Theme
 theme: russtone
+
+# SEO
+sitemap:
+  path: sitemap.xml
 
 # Code highlight
 highlight:

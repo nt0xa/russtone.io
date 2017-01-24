@@ -1,38 +1,39 @@
 include ../bemto/bemto
 
 doctype html
-html(lang='en')
+html(lang=config.language)
 
-	head
-		title= config.title
-		meta(charset='UTF-8')
-		meta(name='viewport', content='width=device-width, initial-scale=1.0')
-		link(rel='stylesheet', href=url_for('css/index.css'))
+  head
+    block head
+      title= page.title
+      meta(charset='UTF-8')
+      meta(name='viewport', content='width=device-width, initial-scale=1.0')
+      meta(name='description', content=config.description)
+      link(rel='stylesheet', href=url_for('css/index.css'))
+      include google-analytics.pug
 
-	body
-		header
-			+b.logo
-				+e.A(href=config.url).link
-					+e.SPAN.head russtone
-					+e.SPAN.tail .io
+  body
+    header
+      +b.logo
+        +e.A(href=config.url).link
+          +e.SPAN.head russtone
+          +e.SPAN.tail .io
 
-		nav
-			+b.UL.nav-menu
-				each name, path in theme.menu
-					+e.item
-						+e.link(href=url_for(path))= name
+    nav
+      +b.UL.nav-menu
+        each name, path in theme.menu
+          +e.item
+            +e.link(href=url_for(path))= name
 
-		main
-			block content
+    main
+      block content
 
-		footer
-			+b.UL.contacts
-				each item, name in theme.contacts
-					+e.item
-						+e.A(href=item.link, class='link _' + name)
-							i(class=item.icon)
+    footer
+      +b.UL.contacts
+        each item, name in theme.contacts
+          +e.item
+            +e.A(href=item.link, class='link _' + name)
+              i(class=item.icon)
 
-		include google-analytics.pug
-		include disqus.pug
 
 
