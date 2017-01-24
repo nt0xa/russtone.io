@@ -15,8 +15,7 @@ function stylusRenderer(data, options, callback) {
     .use(rupture())
     .use(typographic())
     .set('filename', data.path)
-    .set('sourcemap', config.sourcemaps)
-    .set('compress', config.compress)
+    .set('compress', true)
     .render(callback);
 }
 

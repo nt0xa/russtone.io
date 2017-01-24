@@ -12,6 +12,7 @@
     "hexo-generator-archive": "latest",
     "hexo-generator-category": "latest",
     "hexo-generator-index": "latest",
+    "hexo-generator-sitemap": "^1.1.2",
     "hexo-generator-tag": "latest",
     "hexo-server": "latest",
     "highlight.js": "latest",
