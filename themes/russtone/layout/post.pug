@@ -7,6 +7,10 @@ block content
   +b.ARTICLE.post
     +e.H1.title= page.title
     +e.date= page.date.format('DD MMM YYYY')
+    +b.tags
+      each tag in page.tags.toArray()
+        +e.A(href=tag.permalink)
+          +e.tag= tag.name
     +e.divider
     +e.content!= page.content
 

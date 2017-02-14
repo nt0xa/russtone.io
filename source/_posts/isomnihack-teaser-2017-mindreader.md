@@ -1,7 +1,11 @@
 title: "Isomni'hack 2017 teaser mindreader writeup"
 date: 2017-01-23 14:11
 category: writeups
-tags: android
+tags:
+	- ctf
+	- android
+	- mobile
+	- writeup
 teaser:
 	Writeup of mindreader task from Isomni'hack teaser CTF 2017.
 ---

@@ -6,5 +6,8 @@ block content
       +e.H1.title
         +e.A(href=url_for(post.path)).link= post.title
       +e.date= post.date.format('D MMMM YYYY')
+      +b.tags
+        each tag in post.tags.toArray()
+          +e.A(href=tag.permalink)
+            +e.tag= tag.name
       +e.P.teaser= post.teaser
-      +e.A(href=url_for(post.path)).read-more Read more
