@@ -1,4 +1,4 @@
-title: "BSides San Francisco CTF 'Flag Receiver' writeup"
+title: "BSides San Francisco CTF FlagReceiver writeup"
 date: 2017-02-14 19:00
 category: writeups
 tags:
@@ -11,11 +11,12 @@ teaser:
 	Writeup of Flag Receiver task from BSides San Francisco CTF 2017.
 ---
 
-**Flag Receiver – 200*
-
-*Here is a simple mobile application that will hand you the flag.. if you ask for it the right way.*
-
-**P.S, it is meant to have a blank landing activity  Use string starting with Flag:* [flagstore.apk](flagstore.apk)
+> Flag Receiver – 200  
+> Here is a simple mobile application that will hand you the flag.. if you ask for it the right way.  
+>
+> \*P.S, it is meant to have a blank landing activity  Use string starting with Flag:  
+>
+> [flagstore.apk](flagstore.apk)
 
 First of all, I decompiled apk code with [apktool](https://ibotpeaches.github.io/Apktool/) and [enjarify](https://github.com/google/enjarify):
 ```sh

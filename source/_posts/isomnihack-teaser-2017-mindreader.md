@@ -10,7 +10,11 @@ teaser:
 	Writeup of mindreader task from Isomni'hack teaser CTF 2017.
 ---
 
-*Machines infected lots of Android smartphones and try to collect information on human behaviour... Have a look to their application and try to steal information on them.* [APK](mindreader-c3df7f2c966238cc8f4d4327dc1dca8b8b5a69d702f966963c828c965ebbf516.apk)
+> Machines infected lots of Android smartphones and try to collect information on human behaviour...
+>
+> Have a look to their application and try to steal information on them.
+>
+> [mindreader.apk](mindreader-c3df7f2c966238cc8f4d4327dc1dca8b8b5a69d702f966963c828c965ebbf516.apk)
 
 So we have an android application file. Let's decompile its code!
 
