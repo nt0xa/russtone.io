@@ -183,7 +183,7 @@ Click appeared *Broadcast* button in the emulator:
 
 ![](broadcast.png)
 
-Finally, in dozer console you see:
+Finally, in the drozer console you see:
 
 ```sh
 Action: com.flagstore.ctf.OUTGOING_INTENT
