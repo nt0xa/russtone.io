@@ -112,6 +112,27 @@ table
     &:nth-child(2n)
       background-color: $white-1
 
+blockquote
+  display: block
+  background-color: $white-1
+  padding: 15px 20px 15px 50px
+  margin: 0 0 20px
+  position: relative
+  border-left-style: solid
+  border-left-width: 15px
+  border-color: $blue
+
+  &:after
+    content: "\201C"
+    font-size: 3em;
+    font-weight: bold;
+    color: $blue
+    position: absolute;
+    left: 0px;
+    top: 25px;
+  &:before
+    content: ""
+
 // ==========
 // = Blocks =
 // ==========
@@ -156,6 +177,8 @@ table
     border-bottom: 1px solid $light-grey-1
   &__link
     color: $dark-grey-0
+    &:hover
+      color: $dark-grey-1
   &__date
     font-family: 'Source Sans Pro', sans-serif
     color: $light-grey-0
@@ -164,6 +187,8 @@ table
     margin: 1rem 0
 
 .post
+  &__title
+    color: $dark-grey-0
   &__date
     font-family: 'Source Sans Pro', sans-serif
     color: $light-grey-0
@@ -207,20 +232,17 @@ table
       font-size: 2.5rem
   &__link
     &_twitter
-      color: $cyan
+      color: #1da1f2
       &:hover
-        color: $cyan
+        color: shade(#1da1f2, 30%)
     &_github
-      color: $dark-grey-0
+      color: #333
       &:hover
-        color: $dark-grey-0
+        color: shade(#333, 30%)
     &_linkedin
-      color: $blue
+      color: #0077b5
       &:hover
-        color: $blue
-    +desktop()
-      color: $light-grey-0
-      transition: color .6s ease-out 0s
+        color: shade(#0077b5, 30%)
 
 // =============
 // = Highlight =
