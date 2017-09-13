@@ -3,28 +3,25 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.2.2"
+    "version": "3.3.9"
   },
   "dependencies": {
-    "hexo": "latest",
-    "hexo-browsersync": "latest",
-    "hexo-deployer-rsync": "latest",
-    "hexo-generator-archive": "latest",
-    "hexo-generator-category": "latest",
-    "hexo-generator-index": "latest",
+    "bemto.pug": "^2.1.0",
+    "hexo": "^3.3.9",
+    "hexo-browsersync": "^0.2.0",
+    "hexo-deployer-rsync": "^0.1.3",
+    "hexo-generator-index": "^0.2.1",
     "hexo-generator-sitemap": "^1.1.2",
-    "hexo-generator-tag": "latest",
-    "hexo-server": "latest",
-    "highlight.js": "latest",
-    "jeet": "7.1.0",
+    "hexo-server": "^0.2.2",
+    "jeet": "7.2.0",
     "markdown-it": "^8.2.2",
-    "markdown-it-anchor": "^2.5.0",
+    "markdown-it-anchor": "^4.0.0",
     "markdown-it-katex": "^2.0.1",
     "markdown-it-table-of-contents": "^0.3.1",
-    "nib": "latest",
-    "pug": "latest",
+    "nib": "^1.1.2",
+    "pug": "^2.0.0-rc.4",
     "rupture": "^0.6.1",
-    "stylus": "latest",
+    "stylus": "^0.54.5",
     "typographic": "^3.0.0"
   }
 }

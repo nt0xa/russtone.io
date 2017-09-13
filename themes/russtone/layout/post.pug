@@ -1,8 +1,5 @@
 extends default
 
-block append head
-  include disqus.pug
-
 block content
   +b.ARTICLE.post
     +e.H1.title= page.title
@@ -13,7 +10,3 @@ block content
           +e.tag= tag.name
     +e.divider
     +e.content!= page.content
-
-  +b.DIV(id='disqus_thread')
-
-
