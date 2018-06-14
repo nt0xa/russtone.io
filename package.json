@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.3.9"
+    "version": "3.7.1"
   },
   "dependencies": {
     "bemto.pug": "^2.1.0",
@@ -17,7 +17,7 @@
     "markdown-it": "^8.4.1",
     "markdown-it-anchor": "^4.0.0",
     "markdown-it-katex": "^2.0.3",
-    "markdown-it-table-of-contents": "^0.3.3",
+    "markdown-it-table-of-contents": "^0.3.6",
     "nib": "^1.1.2",
     "pug": "^2.0.3",
     "rupture": "^0.7.1",
