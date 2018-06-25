@@ -278,7 +278,7 @@ Cool, but we don't have values `some_int` and `dword_1D0F8`.
 At this point I decided that it would be easier to place a breakpoint here and just copy this values from memory because I'm lazy :)
 To do this I used android emulator `armeabi-v7a`:
 
-![](emulator.png)
+![](isomnihack-teaser-2017-mindreader/emulator.png)
 
 Start emulator with the command:
 
@@ -291,31 +291,31 @@ Then install application to emulator by drag'n'dropping APK-file to emulator's w
 After that set up Ida Dalvik debugger as described [here](https://www.hex-rays.com/products/ida/support/tutorials/debugging_dalvik.pdf)
 and place a breakpoint on `encrypt` in `readMind` function:
 
-![](dalvik_breakpoint.png)
+![](isomnihack-teaser-2017-mindreader/dalvik_breakpoint.png)
 
 Then open another Ida instance with `libnative-lib.so`,
 set up remote android debugger as described [here](https://finn.svbtle.com/remotely-debugging-android-binaries-in-ida-pro)
 and place a breakpoint before encryption starts:
 
-![](arm_breakpoint.png)
+![](isomnihack-teaser-2017-mindreader/arm_breakpoint.png)
 
 After that start Ida with Dalvik debugger and wait until program stops and then start remote android debugger and attach to application process:
 
-![](attach.png)
+![](isomnihack-teaser-2017-mindreader/attach.png)
 
 Next, press continue (F9) in the first Ida instance (Dalvik debugger) and wait until breakpoint fires in the second instance.
 
-![](break.png)
+![](isomnihack-teaser-2017-mindreader/break.png)
 
 Ok, now we can just copy values of `some_int` and `dword_1D0F8`.
 
 `dword_1D0F8` (started with `7E 66 31 05`):
 
-![](hex.png)
+![](isomnihack-teaser-2017-mindreader/hex.png)
 
 and `some_int = 0xb1342c3a`:
 
-![](stack.png)
+![](isomnihack-teaser-2017-mindreader/stack.png)
 
 So we can rewrite encrypion in python:
 

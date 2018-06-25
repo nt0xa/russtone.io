@@ -1,5 +1,5 @@
 ---
-title: "BSides San Francisco CTF FlagReceiver writeup"
+title: BSides San Francisco CTF FlagReceiver writeup
 date: 2017-02-14 19:00
 category: writeups
 tags:
@@ -130,7 +130,7 @@ Done: /var/folders/s4/hf3pw66928v6qdhftl_53lkr0000gn/T/tmpAKONaf/agent.apk
 
  Run drozer agent on the emulator and click the *On* button:
 
-![](drozer.png)
+![](bssidessf-2017-flagreceiver/drozer.png)
 
 On your computer forward drozer's port and connect to it using the client:
 
@@ -168,7 +168,7 @@ dz> run app.broadcast.sniff --action "com.flagstore.ctf.OUTGOING_INTENT"
 
 Then, run the flagstore application on the emulator:
 
-![](flagstore.png)
+![](bssidessf-2017-flagreceiver/flagstore.png)
 
  Send `com.flagstore.ctf.INCOMING_INTENT` with correct `msg` parameter to the app using adb:
 
@@ -180,7 +180,7 @@ generic_x86_64:/ $ am broadcast -a "com.flagstore.ctf.INCOMING_INTENT" --es msg 
 
 Click appeared *Broadcast* button in the emulator:
 
-![](broadcast.png)
+![](bssidessf-2017-flagreceiver/broadcast.png)
 
 Finally, in the drozer console you see:
 

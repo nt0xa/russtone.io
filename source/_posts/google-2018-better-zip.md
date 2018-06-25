@@ -8,7 +8,6 @@ tags:
     - writeup
 teaser: Writeup of Better Zip crypto task from Google CTF 2018
 typora-copy-images-to: ./google-2018-better-zip
-typora-root-url: ./google-2018-better-zip/
 ---
 
 > BETTER ZIP
@@ -112,7 +111,7 @@ seq:
     size: 32
 ```
 
-And this is how it looks in [Kaitai Web IDE](https://ide.kaitai.io):![screenshot_2018-06-24_at_19.57.29](screenshot_2018-06-24_at_19.57.29.png)
+And this is how it looks in [Kaitai Web IDE](https://ide.kaitai.io):![screenshot_2018-06-24_at_19.57.29](google-2018-better-zip/screenshot_2018-06-24_at_19.57.29.png)
 
 As we can see there is a file with the name `flag.png` in our "better-zip" achive.
 
@@ -239,7 +238,7 @@ We already know that there is a PNG file inside the `flag.zip` and thereby we kn
 
 Here is some random PNG file opened in a hex editor:
 
-![screenshot_2018-06-24_at_21.21.02](screenshot_2018-06-24_at_21.21.02.png)
+![screenshot_2018-06-24_at_21.21.02](google-2018-better-zip/screenshot_2018-06-24_at_21.21.02.png)
 
 We can compare our known `89504e470d0a1a0a0000000d4948445200000280` with the structure above and make sure they match.
 
@@ -532,4 +531,4 @@ Success! (891178, 96592, 360648, 51229, 219426, 416203, 161972, 342767)
 
 Finally we get the flag:
 
-![flag](flag.png)
+![flag](google-2018-better-zip/flag.png)

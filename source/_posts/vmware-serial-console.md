@@ -43,4 +43,4 @@ That's all. Now we can try to connect.
 
 Just choose 'Serial', enter port name to 'Serial line' and baud rate to 'Speed':
 
-![](putty.png)
+![](vmware-serial-console/putty.png)
