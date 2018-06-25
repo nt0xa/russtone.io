@@ -1,13 +1,13 @@
+---
 title: "Isomni'hack 2017 teaser mindreader writeup"
 date: 2017-01-23 14:11
 category: writeups
 tags:
-	- ctf
-	- android
-	- mobile
-	- writeup
-teaser:
-	Writeup of mindreader task from Isomni'hack teaser CTF 2017.
+    - ctf
+    - android
+    - mobile
+    - writeup
+teaser: Writeup of mindreader task from Isomni'hack teaser CTF 2017.
 ---
 
 > Machines infected lots of Android smartphones and try to collect information on human behaviour...

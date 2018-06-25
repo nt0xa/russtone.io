@@ -1,12 +1,13 @@
+---
 title: Control Linux VMware virtual machine over serial port
 date: 2016-06-02 15:40:14
 category: til
 tags:
-	- linux
-	- vmware
-teaser:
-	How to add serial port to your VM, configure it and connect over
-	it with PuTTY.
+    - linux
+    - vmware
+teaser: |
+    How to add serial port to your VM, configure it and connect over
+    it with PuTTY.
 ---
 
 It can be useful when you test network communications and you don't want

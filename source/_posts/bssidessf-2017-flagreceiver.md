@@ -1,14 +1,13 @@
+---
 title: "BSides San Francisco CTF FlagReceiver writeup"
 date: 2017-02-14 19:00
 category: writeups
 tags:
-
-	- ctf
-	- android
-	- mobile
-	- writeup
-teaser:
-	Writeup of Flag Receiver task from BSides San Francisco CTF 2017.
+    - ctf
+    - android
+    - mobile
+    - writeup
+teaser: Writeup of Flag Receiver task from BSides San Francisco CTF 2017.
 ---
 
 > Flag Receiver – 200  

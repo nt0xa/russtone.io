@@ -1,11 +1,10 @@
+---
 title: 'CheckInstall: Better way to install software compiled from source'
 date: 2016-05-27 13:02:24
 category: til
 tags:
-	- linux
-teaser:
-	This post describes how to use CheckInstall for install/remove programs
-	built from source on Unix-like systems.
+    - linux
+teaser: This post describes how to use CheckInstall for install/remove programs built from source on Unix-like systems.
 ---
 
 I often need to install software that is not available in repositories.
