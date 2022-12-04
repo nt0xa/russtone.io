@@ -161,7 +161,7 @@ int __fastcall Java_ch_scrt_hiddenservice_MainActivity_encrypt(int env, int obj,
 Better but still not readable because of many function calls like `(*(int (__fastcall **)(int, int, char *))(*(_DWORD *)env_1 + 736))`  i.e. by offset in struct `JNIEnv *env`.
 We need to find function names by their offsets in struct `JNIEnv`.
 All JNI functions are listed [here](http://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/functions.html).
-But I found cool Ida script [IDA_JNI_Rename](https://github.com/trojancyborg/IDA_JNI_Rename) on GitHub that helps to do renamamings.
+But I found cool Ida script [IDA_JNI_Rename](https://github.com/strazzere/android-scripts/tree/541dc9c2568cd820a8739adbd75b44c5b3bc17fe/IDA/IDA_JNI_Rename) on GitHub that helps to do renamamings.
 After using it our function will look like this:
 
 ```c
@@ -288,13 +288,13 @@ Start emulator with the command:
 
 Then install application to emulator by drag'n'dropping APK-file to emulator's window.
 
-After that set up Ida Dalvik debugger as described [here](https://www.hex-rays.com/products/ida/support/tutorials/debugging_dalvik.pdf)
+After that set up Ida Dalvik debugger as described [here](https://web.archive.org/web/20170929162615/https://www.hex-rays.com/products/ida/support/tutorials/debugging_dalvik.pdf)
 and place a breakpoint on `encrypt` in `readMind` function:
 
 ![](isomnihack-teaser-2017-mindreader/dalvik_breakpoint.png)
 
 Then open another Ida instance with `libnative-lib.so`,
-set up remote android debugger as described [here](https://finn.svbtle.com/remotely-debugging-android-binaries-in-ida-pro)
+set up remote android debugger as described [here](https://web.archive.org/web/20180517084221/https://finn.svbtle.com/remotely-debugging-android-binaries-in-ida-pro)
 and place a breakpoint before encryption starts:
 
 ![](isomnihack-teaser-2017-mindreader/arm_breakpoint.png)
@@ -406,5 +406,5 @@ So, after gettting all nessesary table names and column names I got a flag:
 INS{N00bSmS_M1nD_r3ad1nG_TecH}
 ```
 
- Full script [solve.py](solve.py).
+Full script [solve.py](solve.py).
 
