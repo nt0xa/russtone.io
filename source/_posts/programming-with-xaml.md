@@ -258,17 +258,17 @@ using System.Windows.Markup;
 
 namespace XamlTest
 {
-	class Program
-	{
-		static void Main(string[] args)
-		{
+  class Program
+  {
+    static void Main(string[] args)
+    {
 
-			var xaml = @"
+      var xaml = @"
 <ResourceDictionary
-	xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation""
-	xmlns:x=""http://schemas.microsoft.com/winfx/2006/xaml""
-	xmlns:s=""clr-namespace:System;assembly=mscorlib""
-	xmlns:d=""clr-namespace:System.Diagnostics;assembly=System"">
+  xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation""
+  xmlns:x=""http://schemas.microsoft.com/winfx/2006/xaml""
+  xmlns:s=""clr-namespace:System;assembly=mscorlib""
+  xmlns:d=""clr-namespace:System.Diagnostics;assembly=System"">
 
 <ObjectDataProvider x:Key=""calc""
                     ObjectType=""{x:Type d:Process}""
@@ -280,18 +280,18 @@ namespace XamlTest
 
 </ResourceDictionary>";
 
-			try
-			{
-				XamlReader.Parse(xaml);
-			}
-			catch (Exception e)
-			{
-				Console.WriteLine(e.Message);
-			}
+      try
+      {
+        XamlReader.Parse(xaml);
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine(e.Message);
+      }
 
-			Console.ReadKey();
-		}
-	}
+      Console.ReadKey();
+    }
+  }
 }
 ```
 
